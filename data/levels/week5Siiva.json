@@ -2,6 +2,7 @@
   "version": "1.0.0",
   "name": "RED SNOW",
   "titleAsset": "storymenu/titles/week5",
+  "visible": false,
   "props": [
     {
       "assetPath": "storymenu/props/parents-xmas",
@@ -53,5 +54,5 @@
     }
   ],
   "background": "#F9CF51",
-  "songs": [""]
+  "songs": ["cocoa-short-version", "eggnog-short-version", "winter-horrorland-short-version"]
 }

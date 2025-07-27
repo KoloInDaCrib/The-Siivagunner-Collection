@@ -1,0 +1,51 @@
+{
+  "version": "2.2.4",
+  "songName": "Eggnog (Short Version)",
+  "artist": "Kawai Sprite / Siivagunner",
+  "looped": false,
+  "offsets": {
+    "instrumental": 0,
+    "altInstrumentals": {    },
+    "vocals": {    },
+    "altVocals": {    }
+  },
+  "playData": {
+    "songVariations": [    ],
+    "difficulties": [
+      "siiva"
+    ],
+    "characters": {
+      "player": "bf-christmas",
+      "girlfriend": "gf-christmas",
+      "opponent": "parents-christmas",
+      "instrumental": "",
+      "opponentVocals": [
+        "parents-christmas"
+      ]
+    },
+    "stage": "mallXmas",
+    "noteStyle": "funkin",
+    "ratings": {
+      "siiva": 0
+    },
+    "previewStart": 0,
+    "previewEnd": 0
+  },
+  "generatedBy": "Friday Night Funkin' - v0.7.3",
+  "timeFormat": "ms",
+  "timeChanges": [
+    {
+      "t": 0,
+      "b": 0,
+      "bpm": 150,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    }
+  ]
+}

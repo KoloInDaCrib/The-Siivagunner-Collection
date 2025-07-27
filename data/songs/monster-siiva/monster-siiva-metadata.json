@@ -1,0 +1,132 @@
+{
+  "version": "2.2.4",
+  "songName": "Montser (Siiva Mix)",
+  "artist": "Kawai Sprite / Siivagunner",
+  "looped": false,
+  "offsets": {
+    "instrumental": 0,
+    "altInstrumentals": {    },
+    "vocals": {    },
+    "altVocals": {    }
+  },
+  "playData": {
+    "songVariations": [    ],
+    "difficulties": [
+      "siiva"
+    ],
+    "characters": {
+      "player": "bf",
+      "girlfriend": "gf",
+      "opponent": "monster",
+      "instrumental": "",
+      "opponentVocals": [
+        "monster"
+      ],
+      "playerVocals": [
+        "bf"
+      ]
+    },
+    "stage": "spookyMansion",
+    "noteStyle": "funkin",
+    "ratings": {
+      "siiva": 5
+    },
+    "previewStart": 0,
+    "previewEnd": 0
+  },
+  "generatedBy": "Friday Night Funkin' - v0.7.3",
+  "timeFormat": "ms",
+  "timeChanges": [
+    {
+      "t": 0,
+      "b": 0,
+      "bpm": 84,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    {
+      "t": 140000,
+      "b": 196,
+      "bpm": 75,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    {
+      "t": 152800,
+      "b": 212,
+      "bpm": 80,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    {
+      "t": 161800,
+      "b": 224,
+      "bpm": 75,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    {
+      "t": 165258.328,
+      "b": 228.3229,
+      "bpm": 90,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    {
+      "t": 208020.25,
+      "b": 292.4658,
+      "bpm": 70,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    {
+      "t": 222020.234,
+      "b": 308.7991,
+      "bpm": 84,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    }
+  ]
+}
