@@ -1,7 +1,7 @@
 {
   "version": "2.2.4",
   "songName": "Monster (Siiva Mix)",
-  "artist": "Kawai Sprite / Siivagunner",
+  "artist": "BassetFilms / Siivagunner",
   "looped": false,
   "offsets": {
     "instrumental": 0,
@@ -27,6 +27,7 @@
       ]
     },
     "stage": "spookyMansion",
+    "album": "volumeHQ",
     "noteStyle": "funkin",
     "ratings": {
       "siiva": 5

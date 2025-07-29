@@ -1,0 +1,41 @@
+import flixel.tweens.FlxEase;
+import funkin.graphics.FunkinSprite;
+import flixel.tweens.FlxTween;
+import funkin.play.PlayState;
+import funkin.play.PlayStatePlaylist;
+import funkin.play.song.Song;
+import flixel.FlxG;
+import flixel.FlxSprite;
+import flixel.util.FlxTimer;
+import funkin.save.Save;
+import funkin.effects.RetroCameraFade;
+
+class TestSiivaSong extends Song
+{
+  public function new()
+  {
+    super('test-siiva');
+  }
+
+  public override function onSongLoaded(event:CountdownScriptEvent):Void
+  {
+    super.onSongLoaded(event);
+    var gfPoint = PlayState.instance.currentStage.getGirlfriend().cameraFocusPoint;
+    PlayState.instance.tweenCameraToPosition(gfPoint.x, gfPoint.y, 0);
+  }
+
+  public override function onCountdownStart(event:CountdownScriptEvent):Void
+  {
+    super.onCountdownStart(event);
+		PlayState.instance.currentStage.getNamedProp('stageCurtains').loadGraphic(Paths.image('stagecurtainssiiva', 'week1'));
+  }
+
+  public override function onSongRetry(event:CountdownScriptEvent):Void
+  {
+    super.onSongRetry(event);
+    var gfPoint = PlayState.instance.currentStage.getGirlfriend().cameraFocusPoint;
+    PlayState.instance.resetCamera(false, false, false);
+    PlayState.instance.cancelCameraFollowTween();
+    PlayState.instance.cameraFollowPoint.setPosition(gfPoint.x, gfPoint.y);
+  }
+}

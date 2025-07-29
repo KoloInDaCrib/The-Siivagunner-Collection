@@ -1,0 +1,49 @@
+{
+  "version": "2.2.4",
+  "songName": "Test (Siiva Mix)",
+  "artist": "Kawai Sprite / Siivaguner",
+  "looped": false,
+  "offsets": {
+    "instrumental": 0,
+    "altInstrumentals": {    },
+    "vocals": {    },
+    "altVocals": {    }
+  },
+  "playData": {
+    "songVariations": [    ],
+    "difficulties": [
+      "siiva"
+    ],
+    "characters": {
+      "player": "bf",
+      "girlfriend": "gf",
+      "opponent": "bf-pixelgone",
+      "instrumental": ""
+    },
+    "stage": "mainStage",
+    "album": "volumeHQ",
+    "noteStyle": "funkin",
+    "ratings": {
+      "siiva": 2
+    },
+    "previewStart": 0,
+    "previewEnd": 0
+  },
+  "generatedBy": "Friday Night Funkin' - v0.7.3",
+  "timeFormat": "ms",
+  "timeChanges": [
+    {
+      "t": 0,
+      "b": 0,
+      "bpm": 154,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    }
+  ]
+}

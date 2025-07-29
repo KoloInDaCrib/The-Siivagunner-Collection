@@ -1,7 +1,7 @@
 {
   "version": "2.2.4",
   "songName": "Winter Horrorland (Short Version)",
-  "artist": "Kawai Sprite / Siivagunner",
+  "artist": "BassetFilms / Siivagunner",
   "looped": false,
   "offsets": {
     "instrumental": 0,
@@ -24,6 +24,7 @@
       ]
     },
     "stage": "mallEvil",
+    "album": "volumeHQ",
     "noteStyle": "funkin",
     "ratings": {
       "siiva": 21

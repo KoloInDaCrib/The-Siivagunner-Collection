@@ -223,30 +223,30 @@ class SiivaNeneSusCharacter extends SparrowCharacter {
 		// refreshes just for the zIndex shit!
 		if (!refershedLol)
 		{
-			abot.x = this.x - 100;
-			abot.y = this.y + 216 + 100; // 764 - 740
+			abot.x = this.x - 166;
+			abot.y = this.y; // 764 - 740
 			abot.zIndex = this.zIndex - 10;
 
 			PlayState.instance.currentStage.add(abot);
 
 			abotViz.x = abot.x + 200;
-			abotViz.y = abot.y + 84 + 100;
+			abotViz.y = abot.y + 84;
 			abotViz.zIndex = abot.zIndex - 1;
 			PlayState.instance.currentStage.add(abotViz);
 
 
 			eyeWhites.x = abot.x + 40;
-			eyeWhites.y = abot.y + 250 + 100;
+			eyeWhites.y = abot.y + 250;
 			eyeWhites.zIndex = abot.zIndex - 10;
 			PlayState.instance.currentStage.add(eyeWhites);
 
 			pupil.x = abot.x - 507;
-			pupil.y = abot.y - 492 + 100;
+			pupil.y = abot.y - 492;
 			pupil.zIndex = eyeWhites.zIndex + 5;
 			PlayState.instance.currentStage.add(pupil);
 
 			stereoBG.x = abot.x + 150;
-			stereoBG.y = abot.y + 30 + 100;
+			stereoBG.y = abot.y + 30;
 			stereoBG.zIndex = abot.zIndex - 8;
 			PlayState.instance.currentStage.add(stereoBG);
 

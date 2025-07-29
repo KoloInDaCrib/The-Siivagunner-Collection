@@ -1,0 +1,7 @@
+{
+  "version": "1.0.0",
+  "name": "High Quality Funkin'",
+  "artists": ["Siivagunner"],
+  "albumArtAsset": "freeplay/albumRoll/volumeHQ",
+  "albumTitleAsset": "freeplay/albumRoll/volumeHQ-text"
+}
