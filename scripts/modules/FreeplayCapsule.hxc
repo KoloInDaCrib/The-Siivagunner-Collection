@@ -38,7 +38,7 @@ class FreeplayCapsule extends Module {
 		var swagGoodArray:Array<String> = [];
 		var extractedSongID:String;
 		swagGoodArray = songID.split('-');
-		if (StringTools.contains(songID, 'winter-horrorland') || StringTools.contains(songID, 'satin-panties') || StringTools.contains(songID, 'lit-up')) 
+		if (StringTools.contains(songID, 'philly-nice') || StringTools.contains(songID, 'winter-horrorland') || StringTools.contains(songID, 'satin-panties') || StringTools.contains(songID, 'lit-up')) 
 			extractedSongID = swagGoodArray[0] + '-' + swagGoodArray[1]; 
 		else 
 			extractedSongID = swagGoodArray[0];

@@ -1,0 +1,38 @@
+import funkin.play.PlayState;
+
+import funkin.modding.module.Module;
+
+import funkin.Paths;
+import flixel.FlxG;
+import funkin.play.GameOverSubState;
+
+class SiivagunnerRandomGameOvers extends Module
+{
+	function new()
+	{
+		super('SiivagunnerRandomGameOvers');
+	}
+
+	var normalGameOvers:Array<String> = ['', '-siiva', '-beta-mix', '-ingame', '-week2'];
+	var pixelGameOvers:Array<String> = ['-pixel', '-homestuck'];
+
+	override function onGameOver(event) {
+		super.onGameOver(event);
+		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+		if (PlayState.instance.isMinimalMode) return;
+
+		if (PlayState.instance.currentDifficulty != 'siiva') return;
+
+		if (normalGameOvers.contains(GameOverSubState.musicSuffix)) {
+			GameOverSubState.musicSuffix = normalGameOvers[FlxG.random.int(0, normalGameOvers.length - 1)];
+		} else if (pixelGameOvers.contains(GameOverSubState.musicSuffix)) {
+			GameOverSubState.musicSuffix = pixelGameOvers[FlxG.random.int(0, pixelGameOvers.length - 1)];
+		}
+		/*switch (GameOverSubState.musicSuffix) {
+			case '', '-siiva', '-beta-mix', '-ingame', '-week2':
+				GameOverSubState.musicSuffix = normalGameOvers[FlxG.random.int(0, normalGameOvers.length - 1)];
+			case '-pixel', '-homestuck':
+				GameOverSubState.musicSuffix = pixelGameOvers[FlxG.random.int(0, pixelGameOvers.length - 1)];
+		}*/
+	}	
+}

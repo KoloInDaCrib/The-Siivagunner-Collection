@@ -20,7 +20,7 @@
       "e": "PlayAnimation",
       "v": {
 	"force": true,
-	"anim": "BF LoveIntro ",
+	"anim": "BF LoveIntro",
 	"target": "boyfriend"
 }
     },

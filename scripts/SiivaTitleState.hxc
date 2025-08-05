@@ -1,0 +1,104 @@
+import flixel.FlxG;
+
+import flixel.addons.transition.FlxTransitionableState;
+
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+import flixel.FlxSprite;
+import flixel.math.FlxPoint;
+import flixel.addons.display.FlxBackdrop; 
+
+import flixel.util.FlxTimer;
+import funkin.PlayerSettings;
+
+import funkin.ui.mainmenu.MainMenuState;
+import funkin.ui.freeplay.FreeplayState;
+import funkin.ui.options.OptionsState;
+import funkin.ui.title.TitleState;
+import funkin.ui.MusicBeatState;
+import funkin.ui.story.StoryMenuState;
+import funkin.ui.title.FlxSpriteOverlay;
+import funkin.Conductor;
+
+import funkin.ui.transition.LoadingState;
+
+import funkin.play.PlayStatePlaylist;
+import funkin.play.PlayState;
+import funkin.play.PauseSubState;
+import funkin.graphics.FunkinSprite;
+
+import funkin.audio.FunkinSound;
+
+import funkin.modding.base.ScriptedMusicBeatState;
+import funkin.modding.base.MusicBeatState;
+import funkin.modding.module.Module;
+
+import funkin.Paths;
+
+import Std;
+class SiivaTitleState extends Module
+{
+
+	public function new()
+	{
+		super('SiivaTitleState');
+	}
+	
+	var version:String;
+	
+	function startIntro(){
+		if (!Std.isOfType(FlxG.state, TitleState)) return;
+		version = 'JSR';
+		if (FlxG.random.bool(50)) version = 'PT'; // 50% Chance to be Pizza Tower instead
+		FlxG.state.gfDance.shader = null;
+		FlxG.state.gfDance.frames = Paths.getSparrowAtlas('title/' + version + '/gfDanceTitle');
+		FlxG.state.gfDance.animation.addByIndices('danceLeft', 'gfDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);				
+		FlxG.state.gfDance.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+    	FlxG.state.logoBl.frames = Paths.getSparrowAtlas('title/' + version + '/logoBumpin');
+    	FlxG.state.logoBl.animation.addByPrefix('bump', 'logo bumpin', 24);
+    	FlxG.state.logoBl.animation.play('bump');
+		if (version == 'PT') {
+      		FlxG.state.ngSpr.loadGraphic(Paths.image('title/' + version + '/newgrounds_logo'));
+      		FlxG.state.ngSpr.setGraphicSize(Std.int(FlxG.state.ngSpr.width * 0.8));
+			FlxG.state.ngSpr.updateHitbox();
+			FlxG.state.ngSpr.y = FlxG.height * 0.52;
+		}
+		FunkinSound.playMusic('freakyMenu-' + version,
+		{
+        	startingVolume: 0.0,
+    	   	overrideExisting: true,
+    	   	restartTrack: false,
+    	   	// Continue playing this music between states, until a different music track gets played.
+    	   	persist: true
+    	});
+ 		// Fade from 0.0 to 1 over 4 seconds
+		FlxG.sound.music.fadeIn(4.0, 0.0, 1.0);
+	}
+
+	override function onUpdate(event) 
+		{
+			if (FlxG != null && Std.isOfType(FlxG.state, TitleState) && version == 'PT') {
+				if (!FlxG.state.skippedIntro && FlxG.state.lastBeat <= 17) {
+					switch (FlxG.state.lastBeat) {
+						case 7:
+							FlxG.state.textGroup.remove(FlxG.state.textGroup.members[2], true);
+							FlxG.state.addMoreText('Tour De Pizza');
+					}	
+				}
+				super.onUpdate(event);
+			}
+		}	
+	function onStateChangeEnd(event:StateChangeScriptEvent)
+		{
+			super.onStateChangeEnd(event);
+			if (Std.isOfType(FlxG.state, TitleState) && FlxG.save.data.siivatitle) {
+				if (!TitleState.initialized) new FlxTimer().start(1, function(tmr:FlxTimer) {
+      				startIntro();
+    			});
+    			else
+      				startIntro();
+			} else {
+				version = '';
+			}
+		}
+}

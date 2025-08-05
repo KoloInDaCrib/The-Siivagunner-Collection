@@ -50,6 +50,7 @@ class DefaultSoundTray extends Module
 	override function onCreate(event:ScriptEvent)
 	{
 		super.onCreate(event);
+		if (!FlxG.save.data.siivatray) return;
 		FlxG.sound.soundTray.volumeUpSound = FlxG.sound.soundTray.volumeDownSound = FlxG.sound.soundTray.volumeMaxSound = Paths.sound("soundtray/beep");
 		FlxG.sound.soundTray.removeChildren();
 		scaleX = _defaultScale;

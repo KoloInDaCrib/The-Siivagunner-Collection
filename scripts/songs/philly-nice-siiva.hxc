@@ -1,0 +1,42 @@
+import flixel.tweens.FlxEase;
+import funkin.graphics.FunkinSprite;
+import flixel.tweens.FlxTween;
+import funkin.play.PlayState;
+import funkin.play.PlayStatePlaylist;
+import funkin.play.song.Song;
+import flixel.FlxG;
+import flixel.FlxSprite;
+import flixel.util.FlxTimer;
+import funkin.save.Save;
+
+class PhillyNiceSiivaSong extends Song
+{
+  public function new()
+  {
+    super('philly-nice-siiva');
+  }
+
+  public override function onCountdownStart(event:CountdownScriptEvent):Void
+  {
+		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+		if (PlayState.instance.isMinimalMode) return;
+		PlayState.instance.currentStage.getGirlfriend().idleSuffix = '-alt';
+  }
+  
+	function onStepHit(event:SongTimeScriptEvent):Void
+		{
+      super.onStepHit(event);
+		  if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+		  if (PlayState.instance.isMinimalMode) return;
+
+      if (event.step == 160) PlayState.instance.currentStage.getGirlfriend().idleSuffix = '';
+		}
+
+  public override function onSongRetry(event:CountdownScriptEvent):Void
+  {
+    super.onSongRetry(event);
+		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+		if (PlayState.instance.isMinimalMode) return;
+		PlayState.instance.currentStage.getGirlfriend().idleSuffix = '-alt';
+  }
+}

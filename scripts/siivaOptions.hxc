@@ -1,0 +1,41 @@
+import funkin.modding.module.Module;
+import funkin.play.PlayState;
+import funkin.Preferences;
+import funkin.PlayerSettings;
+import funkin.Highscore;
+import funkin.audio.FunkinSound;
+import funkin.Paths;
+import flixel.FlxG;
+import funkin.ui.options.OptionsState;
+import flixel.FlxG;
+import funkin.save.Save;
+
+class SiivaOptions extends Module
+{
+    function new(){
+        super("siivaOptions");
+		if (FlxG.save.data.siivatitle == null) FlxG.save.data.siivatitle = true;
+		if (FlxG.save.data.siivatray == null) FlxG.save.data.siivatray = true;
+    }
+		
+	function onStateChangeEnd(callback)
+	{
+		super.onStateChangeEnd(callback);
+		if (!Std.is(callback.targetState, OptionsState))
+			return;
+		var prefs = callback.targetState.optionsCodex.pages.get("preferences");
+		if (prefs != null) {
+			prefs.createPrefItemCheckbox("Siiva Titlescreen", "Randomly changes the titlescreen to one of two SiIvagunner Rips.", (value) -> {
+				FlxG.save.data.siivatitle = value;
+				FlxG.save.flush();
+			}, FlxG.save.data.siivatitle);
+			if (!FlxG.onMobile){ // Mobile doesn't have a soundtray
+				prefs.createPrefItemCheckbox("Old School Soundtray", "Brings back the original sound tray seen in FNF versions before The Weekend Update. (REQUIRES GAME RESTART)", (value) -> {
+					FlxG.save.data.siivatray = value;
+					//DefaultSoundTray.soundTrayVersion(value);
+					FlxG.save.flush();
+				}, FlxG.save.data.siivatray);
+			}
+		}
+	}
+}
