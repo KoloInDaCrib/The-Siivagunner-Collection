@@ -62,6 +62,7 @@ class SiivaTitleState extends Module
       		FlxG.state.ngSpr.setGraphicSize(Std.int(FlxG.state.ngSpr.width * 0.8));
 			FlxG.state.ngSpr.updateHitbox();
 			FlxG.state.ngSpr.y = FlxG.height * 0.52;
+			FlxG.state.ngSpr.y += 50;
 		}
 		FunkinSound.playMusic('freakyMenu-' + version,
 		{
