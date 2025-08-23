@@ -14,7 +14,7 @@ class SiivagunnerRandomGameOvers extends Module
 	}
 
 	var normalGameOvers:Array<String> = ['', '-siiva', '-beta-mix', '-ingame', '-week2'];
-	var pixelGameOvers:Array<String> = ['-pixel', '-homestuck'];
+	var pixelGameOvers:Array<String> = ['-pixel', '-pixel-homestuck'];
 
 	override function onGameOver(event) {
 		super.onGameOver(event);

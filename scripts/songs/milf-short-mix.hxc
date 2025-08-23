@@ -1,0 +1,61 @@
+import funkin.play.song.Song;
+import funkin.play.PlayState;
+import funkin.play.cutscene.VideoCutscene;
+import funkin.play.PlayStatePlaylist;
+import flixel.FlxG;
+
+class MILFShortMixSong extends Song
+{
+  var hasPlayedCutscene:Bool;
+
+  public function new()
+  {
+    super('milf-short-mix');
+
+    hasPlayedCutscene = false;
+  }
+
+  public override function onCountdownStart(event:CountdownScriptEvent):Void
+  {
+    super.onCountdownStart(event);
+    if (!hasPlayedCutscene)
+    {
+      trace('Pausing countdown to play a video cutscene (`ugh`)');
+
+      hasPlayedCutscene = true;
+
+      event.cancel(); // CANCEL THE COUNTDOWN!
+
+      startVideo();
+    } else {
+      event.cancel(); // CANCEL THE COUNTDOWN!
+      PlayState.instance.endSong(true);
+    }
+  }
+
+  function startVideo()
+  {
+    if (FlxG.random.bool(20)) VideoCutscene.play(Assets.getPath(Paths.videos('imnolongersorry')));
+    else VideoCutscene.play(Assets.getPath(Paths.videos('imsorry')));
+  }
+
+  /**
+   * Don't replay the cutscene between restarts.
+   */
+  function onSongRetry(event:ScriptEvent)
+  {
+    super.onSongRetry(event);
+
+    hasPlayedCutscene = true;
+  }
+
+  /**
+   * Replay the cutscene after leaving the song.
+   */
+  function onCreate(event:ScriptEvent):Void
+  {
+    super.onCreate(event);
+
+    hasPlayedCutscene = false;
+  }
+}

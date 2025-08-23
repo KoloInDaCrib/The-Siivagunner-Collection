@@ -1,6 +1,22 @@
 ## Currently Added Songs
 
-# NOTE: ALL SONGS UNDER "NORMAL" ARE CALLED "SIIVA MIX" IN GAME
+# NOTE: ALL "NORMAL" SONGS ARE CALLED "SIIVA MIX" IN GAME
+
+# NOTE 2: ALL SONGS ARE IN THEIR OWN DIFFICULTY CALLED "SIIVA"
+
+# FINAL NOTE (PROBABLY): SONGS THAT DON'T HAVE AN EASY WAY TO ACCESS OR ARE TOO SHORT (I.E. GIRLFRIEND'S SONG, GETTIN' FREAKY (SHORT VERSION)) WON'T BE PORTED
+
+# Non-playable Songs
+- Gettin' Freaky
+    - Normal
+    - OST Version
+- Game Over (Don't Stop)
+    - Normal
+    - Beta Mix
+    - In-Game Version
+    - Week 2 Update
+ - Game Over (Chiptune Version)
+     - Normal
 
 # Week 1
 - Bopeebo
@@ -11,7 +27,7 @@
     - Pico Mix
     - Vinyl Mix
 - Dadbattle
-    - In-Game Version (In-Game Mix on March 31)
+    - In-Game Version (In-Game Mix on March 31st)
 
 # Week 2
 - South
@@ -38,6 +54,8 @@
     - EU Version
 - M.I.L.F
     - Normal Version
+    - Short Mix (I'm Sorry)
+        - Beta Mix
 
 # Week 5
 - Cocoa
@@ -60,3 +78,9 @@
     - Alterneeyyytive Mix
 - Guns
     - Normal
+
+# Weekend 1
+- Darnell
+    - Normal
+    - BF Mix
+    - Erect
