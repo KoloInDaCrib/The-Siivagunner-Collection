@@ -27,12 +27,11 @@
       ]
     },
     "stage": "tankmanBattlefield",
-    "album": "volumeHQ",
     "noteStyle": "funkin",
     "ratings": {
       "siiva": 4
     },
-    "album": "volume2",
+    "album": "volumeHQ",
     "previewStart": 0,
     "previewEnd": 15000
   },

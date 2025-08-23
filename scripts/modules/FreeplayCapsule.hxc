@@ -12,6 +12,7 @@ import funkin.PlayerSettings;
 import StringTools;
 import funkin.util.TouchUtil;
 import funkin.util.SwipeUtil;
+import StringTools;
 
 class FreeplayCapsule extends Module {
 
@@ -42,6 +43,11 @@ class FreeplayCapsule extends Module {
 			extractedSongID = swagGoodArray[0] + '-' + swagGoodArray[1]; 
 		else 
 			extractedSongID = swagGoodArray[0];
+		if (!StringTools.contains(cap.weekType.graphic.key, 'freeplay/freeplayCapsule/weektypes')) {
+	   		cap.weekType.frames = Paths.getSparrowAtlas('freeplay/freeplayCapsule/weektypes');
+		    cap.weekType.animation.addByPrefix('WEEK', 'WEEK text instance 1', 24, false);
+	    	cap.weekType.animation.addByPrefix('WEEKEND', 'WEEKEND text instance 1', 24, false);
+		}
 		cap.checkWeek(extractedSongID);
 	}
 	

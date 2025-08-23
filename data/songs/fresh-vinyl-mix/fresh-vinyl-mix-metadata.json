@@ -27,14 +27,13 @@
       ]
     },
     "stage": "mainStage",
-    "album": "volumeHQ",
     "noteStyle": "funkin",
     "ratings": {
       "easy": 1,
       "siiva": 2,
       "normal": 1
     },
-    "album": "volume1",
+    "album": "volumeHQ",
     "previewStart": 0,
     "previewEnd": 15000
   },
