@@ -1,6 +1,6 @@
 {
   "version": "2.2.4",
-  "songName": "Darnell (BF Mix) [Siiva Mix]",
+  "songName": "Darnell (BF Mix) [HQ]",
   "artist": "Saruky / Siivagunner",
   "charter": "fabs + Spazkid / Siivagunner",
   "playData": {
@@ -15,7 +15,7 @@
     "stage": "phillyStreetsErect",
     "noteStyle": "funkin",
     "ratings": { "easy": 3, "normal": 4, "siiva": 5 },
-    "album": "volume4",
+    "album": "volumeHQ",
     "previewStart": 0,
     "previewEnd": 15000
   },

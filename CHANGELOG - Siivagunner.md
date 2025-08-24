@@ -50,6 +50,7 @@
     - Extended Version
 - High
     - Normal
+    - Extended Mix
     - In-Game Version
     - EU Version
 - M.I.L.F

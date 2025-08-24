@@ -3,6 +3,7 @@ import funkin.play.PlayState;
 import funkin.play.cutscene.VideoCutscene;
 import funkin.play.PlayStatePlaylist;
 import flixel.FlxG;
+import funkin.Highscore;
 
 class MILFShortMixSong extends Song
 {
@@ -29,6 +30,7 @@ class MILFShortMixSong extends Song
       startVideo();
     } else {
       event.cancel(); // CANCEL THE COUNTDOWN!
+      Highscore.tallies.totalNotesHit = Highscore.tallies.sick = Highscore.tallies.maxCombo = Highscore.tallies.totalNotes;
       PlayState.instance.endSong(true);
     }
   }
