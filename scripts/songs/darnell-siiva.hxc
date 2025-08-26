@@ -21,45 +21,45 @@ import funkin.play.cutscene.CutsceneType;
 import funkin.play.PlayStatePlaylist;
 
 class DarnellSiivaSong extends Song {
-  var hasPlayedInGameCutscene:Bool;
-  var cutsceneMusic:FunkinSound;
+	var hasPlayedInGameCutscene:Bool;
+	var cutsceneMusic:FunkinSound;
 	var cutsceneConductor:Conductor;
-  var bgSprite:FunkinSprite;
+	var bgSprite:FunkinSprite;
 
 	public function new() {
 		super('darnell-siiva');
 
-    hasPlayedInGameCutscene = false;
+		hasPlayedInGameCutscene = false;
 	}
 
-  public override function listAltInstrumentalIds(difficultyId:String, variationId:String):Array<String> {
-    if (difficultyId == 'siiva' && variationId != 'bf') {
-      var hasBeatenBFMix = Save.instance.hasBeatenSong(this.id, ['siiva'], 'bf');
+	public override function listAltInstrumentalIds(difficultyId:String, variationId:String):Array<String> {
+		if (difficultyId == 'siiva' && variationId != 'bf') {
+			var hasBeatenBFMix = Save.instance.hasBeatenSong(this.id, ['siiva'], 'bf');
 
-      switch (variationId) {
-        case 'bf':
-          // return hasBeatenBFMix ? [''] : [];
-          // No BF mix on Pico instrumental, sorry!
-          return [];
-        default:
-          return hasBeatenBFMix ? ['bf'] : [];
-      }
-    }
-  }
+			switch (variationId) {
+				case 'bf':
+					// return hasBeatenBFMix ? [''] : [];
+					// No BF mix on Pico instrumental, sorry!
+					return [];
+				default:
+					return hasBeatenBFMix ? ['bf'] : [];
+			}
+		}
+	}
 
-  public override function onCountdownStart(event:CountdownScriptEvent):Void {
+	public override function onCountdownStart(event:CountdownScriptEvent):Void {
 		super.onCountdownStart(event);
 
-    if (Save.instance.hasBeatenSong(this.id, ['siiva']) || PlayState.instance.currentVariation == 'bf'){
-      hasPlayedInGameCutscene = true;
-    }
+		if (Save.instance.hasBeatenSong(this.id, ['siiva']) || PlayState.instance.currentVariation == 'bf'){
+			hasPlayedInGameCutscene = true;
+		}
 
-    if(!hasPlayedInGameCutscene){
-      trace('Pausing countdown to play in game cutscene');
+		if(!hasPlayedInGameCutscene){
+			trace('Pausing countdown to play in game cutscene');
 
-      hasPlayedInGameCutscene = true;
+			hasPlayedInGameCutscene = true;
 
-      event.cancel(); // CANCEL THE COUNTDOWN!
+			event.cancel(); // CANCEL THE COUNTDOWN!
 
 			// trace('Adding black background behind cutscene over UI');
 			bgSprite = new FunkinSprite(0, 0);
@@ -70,12 +70,12 @@ class DarnellSiivaSong extends Song {
 			PlayState.instance.add(bgSprite);
 			PlayState.instance.refresh();
 
-      PlayState.instance.camHUD.visible = false;
-      introCutscene();
-    }
+			PlayState.instance.camHUD.visible = false;
+			introCutscene();
+		}
 	}
 
-  function introCutscene(){
+	function introCutscene(){
 		var picoPos:Array<Float> = [PlayState.instance.currentStage.getBoyfriend().cameraFocusPoint.x, PlayState.instance.currentStage.getBoyfriend().cameraFocusPoint.y];
 		var nenePos:Array<Float> = [PlayState.instance.currentStage.getGirlfriend().cameraFocusPoint.x, PlayState.instance.currentStage.getGirlfriend().cameraFocusPoint.y];
 		var darnellPos:Array<Float> = [PlayState.instance.currentStage.getDad().cameraFocusPoint.x, PlayState.instance.currentStage.getDad().cameraFocusPoint.y];
@@ -98,24 +98,24 @@ class DarnellSiivaSong extends Song {
 		cutsceneCan.animation.addByPrefix('forward', "can kick quick0", 24, false);
 		cutsceneCan.animation.addByPrefix('up', "can kicked up0", 24, false);
 		PlayState.instance.currentStage.add(cutsceneCan);
-    cutsceneCan.visible = false;
+		cutsceneCan.visible = false;
 
-    var spraycanPile = PlayState.instance.currentStage.getNamedProp('spraycanPile');
+		var spraycanPile = PlayState.instance.currentStage.getNamedProp('spraycanPile');
 		cutsceneCan.x = spraycanPile.x + 30;
 		cutsceneCan.y = spraycanPile.y - 320;
 		cutsceneCan.zIndex = spraycanPile.zIndex - 1;
 		PlayState.instance.currentStage.refresh();
 
-    var newCan:ScriptedFlxAtlasSprite = ScriptedFlxAtlasSprite.init('SpraycanAtlasSprite', 0, 0);
+		var newCan:ScriptedFlxAtlasSprite = ScriptedFlxAtlasSprite.init('SpraycanAtlasSprite', 0, 0);
 		var spraycanPile = PlayState.instance.currentStage.getNamedProp('spraycanPile');
 		newCan.x = spraycanPile.x - 430;
 		newCan.y = spraycanPile.y - 840;
 		newCan.zIndex = 300;
 		PlayState.instance.currentStage.add(newCan);
 		PlayState.instance.currentStage.refresh();
-    newCan.visible = false;
+		newCan.visible = false;
 
-    PlayState.instance.currentStage.getBoyfriend().playAnimation('intro1', true);
+		PlayState.instance.currentStage.getBoyfriend().playAnimation('intro1', true);
 
 		// camera sets up, pico does his animation showing him pissed
 		new FlxTimer().start(0.1, function(tmr)
@@ -127,7 +127,7 @@ class DarnellSiivaSong extends Song {
 
 		new FlxTimer().start(0.7, function(tmr){
 			cutsceneMusic.play(false);
-      FlxTween.tween(bgSprite, { alpha: 0}, 2, {startDelay: 0.3}, function(){bgSprite.visible = false;});
+			FlxTween.tween(bgSprite, { alpha: 0}, 2, {startDelay: 0.3}, function(){bgSprite.visible = false;});
 		});
 
 		// move camera out to show everything
@@ -156,8 +156,8 @@ class DarnellSiivaSong extends Song {
 		{
 			PlayState.instance.currentStage.getDad().playAnimation('kickCan', true);
 			FunkinSound.playOnce(Paths.sound('Kick_Can_UP'), 1.0);
-      cutsceneCan.animation.play('up');
-      cutsceneCan.visible = true;
+			cutsceneCan.animation.play('up');
+			cutsceneCan.visible = true;
 		});
 
 		// darnell knees the can forward
@@ -165,7 +165,7 @@ class DarnellSiivaSong extends Song {
 		{
 			PlayState.instance.currentStage.getDad().playAnimation('kneeCan', true);
 			FunkinSound.playOnce(Paths.sound('Kick_Can_FORWARD'), 1.0);
-      cutsceneCan.animation.play('forward');
+			cutsceneCan.animation.play('forward');
 		});
 
 		// pico shoots the can, it explodes
@@ -178,8 +178,8 @@ class DarnellSiivaSong extends Song {
 			PlayState.instance.tweenCameraToPosition(darnellPos[0]+100, darnellPos[1], 1, FlxEase.quadInOut);
 
 			newCan.scriptCall('playCanShot');
-      newCan.visible = true;
-      cutsceneCan.visible = false;
+			newCan.visible = true;
+			cutsceneCan.visible = false;
 			new FlxTimer().start(1/24, function(tmr)
 			{
 				darkenStageProps();
@@ -223,7 +223,7 @@ class DarnellSiivaSong extends Song {
 		}
 	}
 
-  function darkenStageProps()
+	function darkenStageProps()
 	{
 		// Darken the background, then fade it back.
 		for (stageProp in PlayState.instance.currentStage.members)
@@ -243,9 +243,9 @@ class DarnellSiivaSong extends Song {
 				continue;
 			}
 
-      if(stageProp.zIndex > 299){
-        continue;
-      }
+			if(stageProp.zIndex > 299){
+				continue;
+			}
 
 			// If not excluded, darken.
 			stageProp.color = 0xFF111111;
@@ -257,25 +257,25 @@ class DarnellSiivaSong extends Song {
 		}
 	}
 
-  /**
-   * Don't replay the cutscene between restarts.
-   */
-  function onSongRetry(event:ScriptEvent)
-  {
-    super.onSongRetry(event);
+	/**
+	 * Don't replay the cutscene between restarts.
+	 */
+	function onSongRetry(event:ScriptEvent)
+	{
+		super.onSongRetry(event);
 
-    hasPlayedInGameCutscene = true;
-  }
+		hasPlayedInGameCutscene = true;
+	}
 
-  /**
-   * Replay the cutscene after leaving the song.
-   */
-  function onCreate(event:ScriptEvent):Void
-  {
-    super.onCreate(event);
+	/**
+	 * Replay the cutscene after leaving the song.
+	 */
+	function onCreate(event:ScriptEvent):Void
+	{
+		super.onCreate(event);
 
-    hasPlayedInGameCutscene = false;
-  }
+		hasPlayedInGameCutscene = false;
+	}
 
 	function onUpdate(event:UpdateScriptEvent) {
 		super.onUpdate(event);

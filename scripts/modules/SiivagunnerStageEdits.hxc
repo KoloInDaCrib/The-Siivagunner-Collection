@@ -30,7 +30,15 @@ class SiivagunnerStageEdits extends Module
 					if (i <= 2) PlayState.instance.currentStage.getNamedProp('limoDancer' + i).hasDanced = true;
 					PlayState.instance.currentStage.getNamedProp('limoDancer' + i).dance(true);
 				}
-				
+			case "ugh-siiva":
+				PlayState.instance.currentStage.getNamedProp('buildings').loadGraphic(Paths.image('depot/tankBuildings', 'week7'));
+				PlayState.instance.currentStage.getNamedProp('ruins').loadGraphic(Paths.image('depot/tankRuins', 'week7'));
+				PlayState.instance.currentStage.getNamedProp('tankRolling').loadSparrow('depot/tankRolling');
+				PlayState.instance.currentStage.getNamedProp('watchtower').loadSparrow('depot/tankWatchtower');
+				PlayState.instance.currentStage.getNamedProp('tankRolling').animation.addByPrefix('roll', 'BG tank w lighting instance 1', 24, true);
+				PlayState.instance.currentStage.getNamedProp('tankRolling').animation.play('roll', true);
+				PlayState.instance.currentStage.getNamedProp('watchtower').animation.addByPrefix('idle', 'watchtower gradient color instance 1', 24, false);
+				PlayState.instance.currentStage.getNamedProp('watchtower').dance(true);
 		}
 	}	
 }

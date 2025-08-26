@@ -1,6 +1,6 @@
 ## Currently Added Songs
 
-# NOTE: ALL "NORMAL" SONGS ARE CALLED "SIIVA MIX" IN GAME
+# NOTE: ALL "NORMAL" SONGS ARE CALLED "HQ" IN GAME (NORMAL SONGS ARE JUST CALLED THE SONGS NAME ON THE SIIVAGUNNER YT CHANNEL)
 
 # NOTE 2: ALL SONGS ARE IN THEIR OWN DIFFICULTY CALLED "SIIVA"
 
@@ -55,6 +55,7 @@
     - EU Version
 - M.I.L.F
     - Normal Version
+    - Beta Mix
     - Short Mix (I'm Sorry)
         - Beta Mix
 
@@ -70,12 +71,14 @@
 - Senpai
     - Beta Mix
 - Roses
+    - Normal
     - Itch.io Build
 - Thorns
     - Normal
 
 # Week 7
 - Ugh
+    - Normal
     - Alterneeyyytive Mix
 - Guns
     - Normal

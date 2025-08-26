@@ -22,6 +22,16 @@ class SpiritGariwaldCharacter extends PackerCharacter
     addToStage(evilTrail);
   }
 
+  function onDestroy(event:ScriptEvent)
+  {
+    super.onDestroy(event);
+    // Should hopefully fix crashes with mods that respawn characters
+    if (evilTrail != null) {
+      evilTrail.kill();
+      evilTrail = null;
+    }
+  }
+
   function addToStage(sprite:FlxSprite)
   {
     if (this.debug)
