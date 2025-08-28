@@ -1,0 +1,108 @@
+import funkin.play.song.Song;
+import funkin.play.PlayState;
+import funkin.play.cutscene.VideoCutscene;
+import funkin.play.PlayStatePlaylist;
+import flixel.FlxG;
+import funkin.Highscore;
+import flixel.math.FlxPoint;
+import flixel.util.FlxColor;
+import funkin.graphics.FunkinSprite;
+import funkin.audio.FunkinSound;
+import funkin.play.GameOverSubState;
+import flixel.util.FlxTimer;
+
+class DadbattleSiivaSong extends Song
+{
+	var hasPlayedCutscene:Bool;
+
+	public function new()
+	{
+		super('dadbattle-siiva');
+
+		hasPlayedCutscene = false;
+	}
+
+	function getMidPointOld(spr:FlxSprite, ?point:FlxPoint):FlxPoint
+	{
+		if (point == null) point = FlxPoint.get();
+		return point.set(spr.x + spr.frameWidth * 0.5 * spr.scale.x, spr.y + spr.frameHeight * 0.5 * spr.scale.y);
+	}
+
+	public static function playBlueBalledSFX():Void
+	{
+		if (Assets.exists(Paths.sound('gameplay/gameover/fnf_loss_sfx' + GameOverSubState.blueBallSuffix)))
+		{
+			FunkinSound.playOnce(Paths.sound('gameplay/gameover/fnf_loss_sfx' + GameOverSubState.blueBallSuffix));
+		}
+		else
+		{
+			FlxG.log.error('Missing blue ball sound effect: ' + Paths.sound('gameplay/gameover/fnf_loss_sfx' + GameOverSubState.blueBallSuffix));
+		}
+	}
+
+	function onSongEnd(event:ScriptEvent)
+	{
+		super.onSongEnd(event);
+		Highscore.tallies.totalNotesHit = Highscore.tallies.sick = Highscore.tallies.maxCombo = Highscore.tallies.totalNotes = 164;
+		
+		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+		if (PlayState.instance.isMinimalMode) return;
+
+		/*if (!hasPlayedCutscene) {
+			hasPlayedCutscene = true;
+			event.cancel();
+			fakeGameOver();
+		}*/
+	}
+
+	function fakeGameOver() {
+		PlayState.instance.mayPauseGame = false;
+		PlayState.instance.disableKeys = true;
+		if (FlxG.onMobile) {
+			if (PlayState.instance.hitbox != null) PlayState.instance.hitbox.visible = false;
+			PlayState.instance.pauseButton.visible = false;
+			PlayState.instance.pauseCircle.visible = false;
+		}
+		var boyfriend = PlayState.instance.currentStage.getBoyfriend();
+		boyfriend.canPlayOtherAnims = true;
+		boyfriend.isDead = true;
+		boyfriend.playAnimation('firstDeath', true, false); // ignoreOther is set to FALSE since you WANT to be able to mash and confirm game over!
+		playBlueBalledSFX();
+		boyfriend.animation.onFinish.add((name) -> if (name == 'firstDeath') {
+			FlxG.camera.fade(FlxColor.BLACK, 0.6);
+			new FlxTimer().start(0.8, function(_) {
+				if (PlayState.instance == null) return; // Just in case you SOMEHOW leave this screen before it's finished
+				Highscore.tallies.totalNotesHit = Highscore.tallies.sick = Highscore.tallies.maxCombo = Highscore.tallies.totalNotes = 1;
+				PlayState.instance.endSong(true);   
+			});
+		});
+		PlayState.instance.cameraFollowPoint.x = getMidPointOld(boyfriend).x;
+		PlayState.instance.cameraFollowPoint.y = getMidPointOld(boyfriend).y;
+		var offsets:Array<Float> = boyfriend.getDeathCameraOffsets();
+		PlayState.instance.cameraFollowPoint.x += offsets[0];
+		PlayState.instance.cameraFollowPoint.y += offsets[1];
+		var targetCameraZoom = (PlayState.instance?.currentStage?.camZoom ?? 1.0) * boyfriend.getDeathCameraZoom();
+		PlayState.instance.tweenCameraZoom(targetCameraZoom, 0, true);
+		PlayState.instance.camHUD.visible = false;
+		var bg:FunkinSprite = new FunkinSprite().makeSolidColor(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
+		// We make this transparent so that we can see the stage underneath during debugging,
+		// but it's normally opaque.
+		var transparent = false;
+		bg.alpha = transparent ? 0.25 : 1.0;
+		bg.scrollFactor.set();
+		bg.screenCenter();
+		bg.zIndex = boyfriend.zIndex - 1;
+		PlayState.instance.currentStage.add(bg);
+		PlayState.instance.currentStage.refresh();
+	}
+
+	/**
+	 * Replay the cutscene after leaving the song.
+	 */
+	function onCreate(event:ScriptEvent):Void
+	{
+		super.onCreate(event);
+
+		hasPlayedCutscene = false;
+	}
+}

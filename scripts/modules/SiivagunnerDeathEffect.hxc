@@ -1,0 +1,91 @@
+import funkin.play.PlayState;
+import funkin.play.PlayStatePlaylist;
+
+import funkin.modding.module.Module;
+
+import funkin.Paths;
+import flixel.FlxG;
+import Date;
+import funkin.play.character.CharacterDataParser;
+import funkin.play.character.CharacterType;
+import funkin.audio.VoicesGroup;
+import funkin.audio.FunkinSound;
+import flixel.math.FlxPoint;
+import flixel.util.FlxColor;
+import funkin.graphics.FunkinSprite;
+import funkin.audio.FunkinSound;
+import funkin.play.GameOverSubState;
+import flixel.util.FlxTimer;
+import flixel.addons.transition.FlxTransitionableState;
+import flixel.addons.transition.Transition;
+import flixel.tweens.FlxTween;
+
+class SiivagunnerDeath extends Module
+{
+	function new()
+	{
+		super('SiivagunnerDeath');
+	}
+
+	var hasPlayedCutscene:Bool = false;
+
+	override function onCountdownStart(event) {
+		super.onCountdownStart(event);
+		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+		if (PlayState.instance.isMinimalMode) return;
+
+		hasPlayedCutscene = false;
+	}
+
+	/*override function onSubStateOpenEnd(event:StateChangeScriptEvent) {
+		super.onSubStateOpenEnd(event);
+		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+		if (PlayState.instance.isMinimalMode) return;
+
+		if (Std.isOfType(event.targetState, GameOverSubState) && PlayState.instance.currentDifficulty != 'siiva' && hasPlayedCutscene) {
+			GameOverSubState.instance.mustNotExit = true;
+		}
+	}*/
+
+	function onSongEnd(event:ScriptEvent)
+	{
+		super.onSongEnd(event);
+		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+		if (PlayState.instance.isMinimalMode) return;
+
+		if (!FlxG.save.data.siivadeath) return;
+		
+		if (PlayState.instance.currentDifficulty != 'siiva') return;
+
+		if (!hasPlayedCutscene && (!PlayStatePlaylist.isStoryMode || PlayStatePlaylist.isStoryMode && PlayStatePlaylist.playlistSongIds.shift() == null)) {
+			if (event.eventCanceled) return;
+			hasPlayedCutscene = true;
+			event.cancel();
+			PlayState.instance.isPlayerDying = true;
+			PlayState.instance.persistentUpdate = false;
+			var gameOverSubState = new GameOverSubState(
+      		{
+        		isChartingMode: PlayState.instance.isChartingMode,
+        		transparent: false
+      		});
+    		FlxTransitionableState.skipNextTransIn = true;
+    		FlxTransitionableState.skipNextTransOut = true;
+    		PlayState.instance.openSubState(gameOverSubState);
+			PlayState.instance.camHUD.visible = false;
+			new FlxTimer().start(0.1, function(_) {
+				GameOverSubState.instance.mustNotExit = true;
+			});
+			PlayState.instance.currentStage.getBoyfriend().animation.onFinish.add((name) -> if (name == 'firstDeath') {
+				FlxG.camera.fade(FlxColor.BLACK, 1.3);
+				new FlxTimer().start(0.2, function(_) {
+					FlxTween.tween(GameOverSubState.instance.gameOverMusic, {volume: 0.0}, 1.3);	
+				});
+				new FlxTimer().start(1.3, function(_) {
+					if (PlayState.instance == null) return; // Just in case you SOMEHOW leave this screen before it's finished
+					//Highscore.tallies.totalNotesHit = Highscore.tallies.sick = Highscore.tallies.maxCombo = Highscore.tallies.totalNotes = 1;
+					PlayState.instance.endSong(true);   
+				});
+			});
+		}
+	}
+}

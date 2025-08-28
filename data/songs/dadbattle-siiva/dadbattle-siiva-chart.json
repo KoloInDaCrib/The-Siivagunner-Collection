@@ -1,0 +1,234 @@
+{
+  "version": "2.0.0",
+  "scrollSpeed": { "easy": 1.6, "normal": 1.8, "siiva": 2.3 },
+  "events": [
+    {
+      "t": 0,
+      "e": "FocusCamera",
+      "v": {
+	"char": 1
+}
+    },
+    {
+      "t": 2666.66666666667,
+      "e": "FocusCamera",
+      "v": {
+	"char": 0
+}
+    },
+    {
+      "t": 5333,
+      "e": "FocusCamera",
+      "v": {
+	"char": 1
+}
+    },
+    {
+      "t": 7999.66666666667,
+      "e": "FocusCamera",
+      "v": {
+	"char": 0
+}
+    },
+    {
+      "t": 10666,
+      "e": "FocusCamera",
+      "v": {
+	"char": 1
+}
+    },
+    {
+      "t": 13332.6666666667,
+      "e": "FocusCamera",
+      "v": {
+	"char": 0
+}
+    },
+    {
+      "t": 15999,
+      "e": "FocusCamera",
+      "v": {
+	"char": 1
+}
+    },
+    {
+      "t": 18665.6666666667,
+      "e": "FocusCamera",
+      "v": {
+	"char": 0
+}
+    },
+    {
+      "t": 21333,
+      "e": "FocusCamera",
+      "v": {
+	"char": 1
+}
+    },
+    {
+      "t": 23999.6666666667,
+      "e": "FocusCamera",
+      "v": {
+	"char": 0
+}
+    },
+    {
+      "t": 26666,
+      "e": "FocusCamera",
+      "v": {
+	"char": 1
+}
+    },
+    {
+      "t": 29332.6666666667,
+      "e": "FocusCamera",
+      "v": {
+	"char": 0
+}
+    },
+    {
+      "t": 31999,
+      "e": "FocusCamera",
+      "v": {
+	"char": 1
+}
+    },
+    {
+      "t": 34665.6666666667,
+      "e": "FocusCamera",
+      "v": {
+	"char": 0
+}
+    },
+    {
+      "t": 37332,
+      "e": "FocusCamera",
+      "v": {
+	"char": 1
+}
+    },
+    {
+      "t": 39998.6666666667,
+      "e": "FocusCamera",
+      "v": {
+	"char": 0
+}
+    },
+    {
+      "t": 42666,
+      "e": "FocusCamera",
+      "v": {
+	"char": 1
+}
+    },
+    {
+      "t": 45332.6666666667,
+      "e": "FocusCamera",
+      "v": {
+	"char": 0
+}
+    },
+    {
+      "t": 47999,
+      "e": "FocusCamera",
+      "v": {
+	"char": 1
+}
+    },
+    {
+      "t": 50665.6666666667,
+      "e": "FocusCamera",
+      "v": {
+	"char": 0
+}
+    },
+    {
+      "t": 53332,
+      "e": "FocusCamera",
+      "v": {
+	"char": 1
+}
+    },
+    {
+      "t": 55998.6666666667,
+      "e": "FocusCamera",
+      "v": {
+	"char": 0
+}
+    },
+    {
+      "t": 58665,
+      "e": "FocusCamera",
+      "v": {
+	"char": 1
+}
+    },
+    {
+      "t": 61331.6666666667,
+      "e": "FocusCamera",
+      "v": {
+	"char": 0
+}
+    },
+    {
+      "t": 63999,
+      "e": "FocusCamera",
+      "v": {
+	"char": 1
+}
+    },
+    {
+      "t": 66665.6666666667,
+      "e": "FocusCamera",
+      "v": {
+	"char": 0
+}
+    },
+    {
+      "t": 69332,
+      "e": "FocusCamera",
+      "v": {
+	"char": 1
+}
+    },
+    {
+      "t": 71998.6666666667,
+      "e": "FocusCamera",
+      "v": {
+	"char": 0
+}
+    },
+    {
+      "t": 74665,
+      "e": "FocusCamera",
+      "v": {
+	"char": 1
+}
+    },
+    {
+      "t": 77331.6666666667,
+      "e": "FocusCamera",
+      "v": {
+	"char": 0
+}
+    },
+    {
+      "t": 79998,
+      "e": "FocusCamera",
+      "v": {
+	"char": 1
+}
+    },
+    {
+      "t": 82664.6666666667,
+      "e": "FocusCamera",
+      "v": {
+	"char": 0
+}
+    }
+  ],
+  "notes": {
+    "siiva": []
+  },
+  "generatedBy": "Friday Night Funkin' - v0.7.3 (master:aa8690f) PROTOTYPE"
+}

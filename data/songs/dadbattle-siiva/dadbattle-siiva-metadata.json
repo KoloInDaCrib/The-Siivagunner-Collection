@@ -1,0 +1,23 @@
+{
+  "version": "2.2.4",
+  "songName": "DadBattle (HQ)",
+  "artist": "Kawai Sprite / Siivagunner",
+  "timeFormat": "ms",
+  "timeChanges": [{ "t": 0, "bpm": 180, "n": 4, "d": 4, "bt": [4, 4, 4, 4] }],
+  "playData": {
+    "ratings": { "easy": 1, "normal": 2, "siiva": 3 },
+    "difficulties": ["siiva"],
+    "characters": {
+      "player": "bf",
+      "girlfriend": "gf",
+      "opponent": "dad",
+      "altInstrumentals": []
+    },
+    "stage": "mainStage",
+    "noteStyle": "funkin",
+    "album": "volumeHQ",
+    "previewStart": 0,
+    "previewEnd": 15000
+  },
+  "generatedBy": "EliteMasterEric (by hand)"
+}

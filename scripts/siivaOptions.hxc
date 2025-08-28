@@ -16,6 +16,7 @@ class SiivaOptions extends Module
         super("siivaOptions");
 		if (FlxG.save.data.siivatitle == null) FlxG.save.data.siivatitle = true;
 		if (FlxG.save.data.siivatray == null) FlxG.save.data.siivatray = true;
+		if (FlxG.save.data.siivadeath == null) FlxG.save.data.siivadeath = true;
     }
 		
 	function onStateChangeEnd(callback)
@@ -26,6 +27,10 @@ class SiivaOptions extends Module
 		var prefs = callback.targetState.optionsCodex.pages.get("preferences");
 		if (prefs != null) {
 			prefs.createPrefItemCheckbox("Siiva Titlescreen", "Randomly changes the titlescreen to one of two SiIvagunner Rips.", (value) -> {
+				FlxG.save.data.siivatitle = value;
+				FlxG.save.flush();
+			}, FlxG.save.data.siivatitle);
+			prefs.createPrefItemCheckbox("Siiva Death", "Blueballs the player at the end of the song.", (value) -> {
 				FlxG.save.data.siivatitle = value;
 				FlxG.save.flush();
 			}, FlxG.save.data.siivatitle);

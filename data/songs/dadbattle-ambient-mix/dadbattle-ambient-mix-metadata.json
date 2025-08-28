@@ -1,8 +1,8 @@
 {
   "version": "2.2.4",
-  "songName": "DadBattle (In-Game Version)",
-  "artist": "Kawai Sprite / Siivagunner",
-  "charter": "Unknown",
+  "songName": "DadBattle (Ambient Mix)",
+  "artist": "Kawai Sprite / JAG",
+  "charter": "Comedy Lost",
   "divisions": 96,
   "looped": false,
   "offsets": {
@@ -19,21 +19,21 @@
     "characters": {
       "player": "bf",
       "girlfriend": "gf",
-      "opponent": "mario",
+      "opponent": "dad",
       "instrumental": "",
       "altInstrumentals": [      ],
       "opponentVocals": [
-        "mario"
+        "dad"
       ],
       "playerVocals": [
         "bf"
       ]
     },
-    "stage": "mainStage",
     "album": "volumeHQ",
+    "stage": "mainStage",
     "noteStyle": "funkin",
     "ratings": {
-      "siiva": 3
+      "siiva": 4
     },
     "previewStart": 0,
     "previewEnd": 0
@@ -44,7 +44,7 @@
     {
       "t": 0,
       "b": 0,
-      "bpm": 180,
+      "bpm": 175,
       "n": 4,
       "d": 4,
       "bt": [
