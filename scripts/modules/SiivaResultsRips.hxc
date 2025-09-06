@@ -1,0 +1,113 @@
+import flixel.FlxG;
+import flixel.util.FlxTimer;
+
+import funkin.Paths;
+import funkin.Highscore;
+import funkin.graphics.FunkinSprite;
+import funkin.play.ResultState;
+import funkin.play.PlayState;
+import funkin.modding.module.Module;
+import flixel.addons.display.FlxBackdrop; 
+import flixel.FlxSprite;
+import funkin.audio.FunkinSound;
+import flixel.FlxCamera;
+import funkin.graphics.FunkinCamera;
+import funkin.play.scoring.Scoring;
+import funkin.util.Constants;
+import flixel.effects.FlxFlicker;
+import StringTools;
+import funkin.Preferences;
+import funkin.data.freeplay.player.PlayerRegistry;
+import funkin.graphics.adobeanimate.FlxAtlasSprite;
+import funkin.modding.base.ScriptedFlxAtlasSprite;
+
+class SiivaResultsRips extends Module {
+	public function new() {
+		super("SiivaResultsRips");
+
+		active = false; // Not fully functional yet + Need more rips
+	}
+
+	function getRank(){
+		var state = FlxG.state.subState;
+		var rank:String = Std.string(Scoring.calculateRank(state.params.scoreData));
+		if (rank == "PERFECT_GOLD") return "PERFECT";
+		else if (rank == "SHIT") return "LOSS";
+		else return rank;
+	}
+		
+	public function getMusicDelay():Float {
+    	switch (getRank()) {
+			case "PERFECT_GOLD", "PERFECT":
+        		// return 2.5;
+        		return 95 / 24;
+			case "EXCELLENT":
+        		return 0;
+			case "GREAT":
+        		return 5 / 24;
+			case "GOOD":
+        		return 3 / 24;
+			case "LOSS":
+        		return 2 / 24;
+      		default:
+        		return 3.5;
+    	}
+  	}
+
+	public function getFlashDelay():Float {
+		switch (getRank()) {
+			case "PERFECT_GOLD", "PERFECT":
+			  	// return 2.5;
+			  	return 129 / 24;
+			case "EXCELLENT":
+			  	return 122 / 24;
+			case "GREAT":
+			  	return 109 / 24;
+			case "GOOD":
+			  	return 107 / 24;
+			case "LOSS":
+			  	return 186 / 24;
+			default:
+			  	return 3.5;
+		}
+	}      
+		 
+	override function onSubStateOpenEnd(event) {
+		super.onSubStateOpenEnd(event);
+		if (Std.isOfType(event.targetState, ResultState)) {
+			var state = event.targetState;
+			new FlxTimer().start(getMusicDelay(), _ -> {
+     			var introMusic:String = Paths.music(state.getMusicPath(state.playerCharacter, state.rank) + '-siiva' + '/' + state.getMusicPath(state.playerCharacter, state.rank) + '-siiva' + '-intro');
+     			if (Assets.exists(introMusic)) {
+					if (state.introMusicAudio != null) {
+          				state.introMusicAudio.stop();
+          				state.introMusicAudio.destroy();
+          				state.introMusicAudio = null;
+        			}
+					FlxG.sound.music.stop();
+       				// Play the intro music.
+       				state.introMusicAudio = FunkinSound.load(introMusic, 1.0, false, true, true, () -> {
+         					introMusicAudio = null;
+							var music:String = Paths.music(state.getMusicPath(state.playerCharacter, state.rank) + '-siiva' + '/' + state.getMusicPath(state.playerCharacter, state.rank) + '-siiva');
+							if (!Assets.exists(music)) music = state.getMusicPath(state.playerCharacter, state.rank);
+							else music = state.getMusicPath(state.playerCharacter, state.rank) + '-siiva';
+         					FunkinSound.playMusic(state.getMusicPath(state.playerCharacter, state.rank), {
+           	  				startingVolume: 1.0,
+           	  				overrideExisting: true,
+           	  				restartTrack: true
+           				});
+       				});
+     			} else {
+					var music:String = Paths.music(state.getMusicPath(state.playerCharacter, state.rank) + '-siiva' + '/' + state.getMusicPath(state.playerCharacter, state.rank) + '-siiva');
+					if (!Assets.exists(music)) return;
+					FlxG.sound.music.stop();
+       				FunkinSound.playMusic(state.getMusicPath(state.playerCharacter, state.rank) + '-siiva', {
+           				startingVolume: 1.0,
+           				overrideExisting: true,
+         		  			restartTrack: true
+         				});
+     				}
+   			});
+		}
+	}
+}

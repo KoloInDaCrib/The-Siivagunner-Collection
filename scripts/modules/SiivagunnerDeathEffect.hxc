@@ -78,6 +78,16 @@ class SiivagunnerDeath extends Module
 			PlayState.instance.currentStage.getBoyfriend().animation.onFinish.add((name) -> if (name == 'firstDeath') {
 				FlxG.camera.fade(FlxColor.BLACK, 1.3);
 				new FlxTimer().start(0.2, function(_) {
+					GameOverSubState.instance.hasPlayedDeathQuote = true;
+					if (GameOverSubState.instance.deathQuoteSound != null) {
+						//Make quote fade out slighlty faster so we can stop it
+						FlxTween.tween(GameOverSubState.instance.deathQuoteSound, {volume: 0.0}, 1.1, {onComplete: function(tween:FlxTween){
+							if (GameOverSubState.instance.deathQuoteSound != null) {
+								GameOverSubState.instance.deathQuoteSound.stop();
+		  						GameOverSubState.instance.deathQuoteSound = null;
+							}
+						}});	
+					}
 					FlxTween.tween(GameOverSubState.instance.gameOverMusic, {volume: 0.0}, 1.3);	
 				});
 				new FlxTimer().start(1.3, function(_) {

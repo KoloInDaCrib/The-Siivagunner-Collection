@@ -1,7 +1,7 @@
 {
   "version": "2.2.4",
   "songName": "DadBattle (HQ)",
-  "artist": "Kawai Sprite / Siivagunner",
+  "artist": "Kawai Sprite / SiivaGunner",
   "timeFormat": "ms",
   "timeChanges": [{ "t": 0, "bpm": 180, "n": 4, "d": 4, "bt": [4, 4, 4, 4] }],
   "playData": {

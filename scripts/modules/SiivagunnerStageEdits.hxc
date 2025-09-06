@@ -30,6 +30,8 @@ class SiivagunnerStageEdits extends Module
 					if (i <= 2) PlayState.instance.currentStage.getNamedProp('limoDancer' + i).hasDanced = true;
 					PlayState.instance.currentStage.getNamedProp('limoDancer' + i).dance(true);
 				}
+			case "roses-siiva", "ice-roses":
+				PlayState.instance.currentStage.getNamedProp('freaks').idleSuffix = '-scared';
 			case "ugh-siiva":
 				PlayState.instance.currentStage.getNamedProp('buildings').loadGraphic(Paths.image('depot/tankBuildings', 'week7'));
 				PlayState.instance.currentStage.getNamedProp('ruins').loadGraphic(Paths.image('depot/tankRuins', 'week7'));

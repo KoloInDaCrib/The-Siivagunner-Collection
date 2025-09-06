@@ -18,10 +18,6 @@
 	"isPixel": false,
 	"assetPath": "characters/DADDY_DEAREST_SUS",
 	"healthIcon": {
-		"offsets": [
-			20,
-			20
-		],
 		"id": "siiva-dad-sus",
 		"flipX": false,
 		"isPixel": false,
