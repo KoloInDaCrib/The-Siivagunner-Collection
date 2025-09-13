@@ -1,0 +1,49 @@
+{
+  "version": "1.0.0",
+
+  "backdrop": {
+    "type": "solid",
+    "fadeTime": 2.0,
+    "color": "#BFB3DFD8"
+  },
+
+  "music": {
+    "asset": "Lunchbox",
+    "fadeTime": 2.0,
+    "looped": true
+  },
+
+  "outro": {
+    "type": "fade",
+    "fadeTime": 1.0
+  },
+
+  "dialogue": [
+    {
+      "speaker": "senpai-hypno",
+      "speakerAnimation": "talkEnter",
+      "box": "roses-hypno",
+      "boxAnimation": "enter",
+
+      "text": ["Welcome back, Enforcer."]
+    },
+    {
+      "speaker": "senpai-hypno",
+      "speakerAnimation": "talk",
+      "box": "roses-hypno",
+      "boxAnimation": "speaking",
+
+      "text": [
+        "You've got Hypnomail."
+      ]
+    },
+    {
+      "speaker": "bf-pixel-hypno",
+      "speakerAnimation": "talkEnter",
+      "box": "roses-hypno",
+      "boxAnimation": "speaking",
+
+      "text": ["Ba bee bop"]
+    }
+  ]
+}

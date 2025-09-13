@@ -1,0 +1,49 @@
+{
+  "version": "1.0.0",
+
+  "backdrop": {
+    "type": "solid",
+    "fadeTime": 2.0,
+    "color": "#BFB3DFD8"
+  },
+
+  "music": {
+    "asset": "",
+    "fadeTime": 0,
+    "looped": false
+  },
+
+  "outro": {
+    "type": "fade",
+    "fadeTime": 1.0
+  },
+
+  "dialogue": [
+    {
+      "speaker": "senpai-angry-daft",
+      "speakerAnimation": "talk",
+      "box": "roses-daft",
+      "boxAnimation": "angrySenpai",
+
+      "text": ["Pas mal pour un gringalet."]
+    },
+    {
+      "speaker": "senpai-angry-daft",
+      "speakerAnimation": "talk",
+      "box": "roses-daft",
+      "boxAnimation": "idle",
+
+      "text": [
+        "Mais cette fois, je vais t'arracher les couilles pour que ta copine puisse savourer les miennes."
+      ]
+    },
+    {
+      "speaker": "bf-pixel-daft",
+      "speakerAnimation": "talkEnter",
+      "box": "roses-daft",
+      "boxAnimation": "idle",
+
+      "text": ["Bip boop bi bi skdoowap"]
+    }
+  ]
+}

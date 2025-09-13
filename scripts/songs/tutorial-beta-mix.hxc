@@ -1,0 +1,52 @@
+import funkin.play.song.Song;
+import funkin.play.PlayState;
+import funkin.play.cutscene.VideoCutscene;
+import funkin.play.PlayStatePlaylist;
+import funkin.save.Save;
+import funkin.audio.VoicesGroup;
+import funkin.audio.FunkinSound;
+import flixel.FlxG;
+
+class TutorialBetaMixSong extends Song
+{
+  public function new()
+  {
+	super('tutorial-beta-mix');
+  }
+
+	override function onSongLoaded(event) {
+		super.onSongLoaded(event);
+		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+		if (PlayState.instance.isMinimalMode) return;
+
+		if (FlxG.save.data.siivavocals) { // Swap to new BF vocals using the new BF samples introduced in the Weekend update
+			PlayState.instance.vocals.stop();
+			PlayState.instance.vocals = buildVocals();
+		}
+	}
+
+	public function buildPlayerVoiceList():Array<String>{		  
+		// Automatically resolve voices by removing suffixes.
+		// For example, if `Voices-bf-car-erect.ogg` does not exist, check for `Voices-bf-erect.ogg`.
+		// Then, check for  `Voices-bf-car.ogg`, then `Voices-bf.ogg`.
+	  
+		var playerVoice:String = Paths.voices(PlayState.instance.currentSong.id.toLowerCase(), '-' + PlayState.instance.currentChart.characters.player + '-modern');
+			  
+		return playerVoice != null ? [playerVoice] : [];
+	}		  
+
+	public function buildVocals():VoicesGroup {
+		var result:VoicesGroup = new VoicesGroup();
+		  
+		var playerVoiceList:Array<String> = buildPlayerVoiceList();
+
+		// Add player vocals.
+		for (playerVoice in playerVoiceList) {
+			result.addPlayerVoice(FunkinSound.load(playerVoice));
+		}
+		  
+		result.playerVoicesOffset = PlayState.instance.currentChart.offsets.getVocalOffset(PlayState.instance.currentChart.characters.player, '');
+
+		return result;
+	}
+}

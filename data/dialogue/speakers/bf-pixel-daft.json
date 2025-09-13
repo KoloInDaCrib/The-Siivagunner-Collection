@@ -1,0 +1,20 @@
+{
+  "version": "1.0.0",
+  "name": "Boyfriend (Pixel)",
+  "assetPath": "week6Dialogue/portraits/bfPortraitDaft",
+  "flipX": false,
+  "isPixel": true,
+  "scale": 5.4,
+  "offsets": [0, 10],
+  "animations": [
+    {
+      "name": "talkEnter",
+      "prefix": "Boyfriend portrait enter instance 1"
+    },
+    {
+      "name": "talk",
+      "frameIndices": [8],
+      "prefix": "Boyfriend portrait enter instance 1"
+    }
+  ]
+}

@@ -41,6 +41,10 @@ class SiivagunnerStageEdits extends Module
 				PlayState.instance.currentStage.getNamedProp('tankRolling').animation.play('roll', true);
 				PlayState.instance.currentStage.getNamedProp('watchtower').animation.addByPrefix('idle', 'watchtower gradient color instance 1', 24, false);
 				PlayState.instance.currentStage.getNamedProp('watchtower').dance(true);
+			case "guns-short-version":
+				PlayState.instance.currentStage.getNamedProp('watchtower').loadSparrow('offset/tankWatchtower');
+				PlayState.instance.currentStage.getNamedProp('watchtower').animation.addByPrefix('idle', 'watchtower gradient color instance 1', 24, false);
+				PlayState.instance.currentStage.getNamedProp('watchtower').dance(true);
 		}
 	}	
 }

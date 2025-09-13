@@ -15,8 +15,10 @@ class SiivaOptions extends Module
     function new(){
         super("siivaOptions");
 		if (FlxG.save.data.siivatitle == null) FlxG.save.data.siivatitle = true;
+		if (FlxG.save.data.siivavocals == null) FlxG.save.data.siivavocals = true;
 		if (FlxG.save.data.siivatray == null) FlxG.save.data.siivatray = true;
 		if (FlxG.save.data.siivadeath == null) FlxG.save.data.siivadeath = true;
+		if (FlxG.save.data.siivalunch == null) FlxG.save.data.siivalunch = true;
 		if (FlxG.save.data.siivaresults == null) FlxG.save.data.siivaresults = true;
     }
 		
@@ -35,10 +37,18 @@ class SiivaOptions extends Module
 				FlxG.save.data.siivatitle = value;
 				FlxG.save.flush();
 			}, FlxG.save.data.siivatitle);
+			prefs.createPrefItemCheckbox("Modern Tutorial Vocals", "Changes the vocals in Tutorial rips to use the new samples introduced in the Weekend update", (value) -> {
+				FlxG.save.data.siivavocals = value;
+				FlxG.save.flush();
+			}, FlxG.save.data.siivavocals);
 			prefs.createPrefItemCheckbox("Siiva Results Music", "Replaces the results music with custom rips made by me.", (value) -> {
 				FlxG.save.data.siivaresults = value;
 				FlxG.save.flush();
 			}, FlxG.save.data.siivaresults);
+			prefs.createPrefItemCheckbox("Siiva Lunchbox Rips", "Enables a random Lunchbox rip during Senpai's dialogue.", (value) -> {
+				FlxG.save.data.siivalunch = value;
+				FlxG.save.flush();
+			}, FlxG.save.data.siivalunch);
 			if (!FlxG.onMobile){ // Mobile doesn't have a soundtray
 				prefs.createPrefItemCheckbox("Old School Soundtray", "Brings back the original sound tray seen in FNF versions before The Weekend Update. (REQUIRES GAME RESTART)", (value) -> {
 					FlxG.save.data.siivatray = value;

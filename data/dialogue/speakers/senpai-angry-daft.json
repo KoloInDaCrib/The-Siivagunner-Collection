@@ -1,0 +1,20 @@
+{
+  "version": "1.0.0",
+  "name": "Senpai (Angry)",
+  "assetPath": "week6Dialogue/portraits/senpaiPortraitHypno",
+  "flipX": false,
+  "isPixel": true,
+  "scale": 0.0,
+  "offsets": [0, 10],
+  "animations": [
+    {
+      "name": "talkEnter",
+      "prefix": "Senpai Portrait Enter instance 1"
+    },
+    {
+      "name": "talk",
+      "frameIndices": [8],
+      "prefix": "Senpai Portrait Enter instance 1"
+    }
+  ]
+}

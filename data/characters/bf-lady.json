@@ -1,0 +1,91 @@
+{
+  "version": "1.0.0",
+  "name": "Boyfriend (Lady)",
+  "assetPath": "characters/BOYFRIEND-LADY",
+  "flipX": true,
+  "singTime": 8.0,
+  "healthIcon": {"id": "bf-lady"},
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "BF LADY idle dance",
+      "offsets": [-5, 0]
+    },
+    {
+      "name": "singLEFT",
+      "prefix": "BF LADY NOTE LEFT0",
+      "offsets": [9, -47]
+    },
+    {
+      "name": "singDOWN",
+      "prefix": "BF LADY NOTE DOWN0",
+      "offsets": [-25, -72]
+    },
+    {
+      "name": "singUP",
+      "prefix": "BF LADY NOTE UP0",
+      "offsets": [-80, -3]
+    },
+    {
+      "name": "singRIGHT",
+      "prefix": "BF LADY NOTE RIGHT0",
+      "offsets": [-43, -20]
+    },
+    {
+      "name": "singLEFTmiss",
+      "prefix": "BF LADY NOTE LEFT MISS",
+      "offsets": [7, -47]
+    },
+    {
+      "name": "singDOWNmiss",
+      "prefix": "BF LADY NOTE DOWN MISS",
+      "offsets": [-25, -75]
+    },
+    {
+      "name": "singUPmiss",
+      "prefix": "BF LADY NOTE UP MISS",
+      "offsets": [-80, -3]
+    },
+    {
+      "name": "singRIGHTmiss",
+      "prefix": "BF LADY NOTE RIGHT MISS",
+      "offsets": [-43, -20]
+    },
+    {
+      "name": "preAttack",
+      "prefix": "bf pre attack",
+      "offsets": [0, 0]
+    },
+    {
+      "name": "attack",
+      "prefix": "boyfriend attack",
+      "offsets": [0, 0]
+    },
+    {
+      "name": "hey",
+      "prefix": "BF LADY HEY!!",
+      "offsets": [7, 4]
+    },
+    {
+      "name": "firstDeath",
+      "prefix": "BF LADY dies",
+      "offsets": [270, -13]
+    },
+    {
+      "name": "deathLoop",
+      "prefix": "BF LADY Dead Loop",
+      "looped": true,
+      "offsets": [-37, 5]
+    },
+    {
+      "name": "deathConfirm",
+      "prefix": "BF LADY Dead confirm",
+      "offsets": [-37, 69]
+    },
+    {
+      "name": "scared",
+      "prefix": "BF LADY idle shaking",
+      "offsets": [-4, 0]
+    }
+  ]
+}

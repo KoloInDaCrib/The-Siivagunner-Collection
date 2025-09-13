@@ -8,6 +8,10 @@
 
 # FINAL NOTE (PROBABLY): SONGS THAT DON'T HAVE AN EASY WAY TO ACCESS OR ARE TOO SHORT (I.E. GIRLFRIEND'S SONG, GETTIN' FREAKY (SHORT VERSION)) WON'T BE PORTED
 
+# Songs that need split vocals
+- Senpai (In-Game Version)
+- Ugh (In-Game Version)
+
 # Non-playable Songs
 - Gettin' Freaky
     - Normal
@@ -22,10 +26,16 @@
 - Results
     - NORMAL
         - Fanmade
+# Tutorial (COMPLETED)
+- Tutorial (COMPLETED)
+    - Normal
+    - Beta Mix
 
 # Week 1
 - Bopeebo
+    - Normal
     - Beta Mix
+    - Extended Version
     - Itch.io Build
     - Pico Mix
 - Fresh
@@ -39,8 +49,9 @@
 # Week 2
 - Spookeez
     - Normal
-- South
+- South (COMPLETED)
     - Normal
+    - Beta Mix
     - In-Game Version
 - Monster
     - Normal
@@ -54,13 +65,14 @@
     - OST Version
     - Week 4 Update
 
-# Week 4
+# Week 4 
 - Satin Panties
     - Extended Version
-- High
+- High (COMPLETED)
     - Normal
     - Extended Mix
     - In-Game Version
+    - JP Version
     - EU Version
 - M.I.L.F
     - Normal Version
@@ -69,18 +81,19 @@
         - Beta Mix
 
 # Week 5 (COMPLETED)
-- Cocoa
+- Cocoa (COMPLETED)
     - Normal
     - Short Version
-- Eggnog
+- Eggnog (COMPLETED)
     - Normal
     - Short Version
--Winter Horrorland
+-Winter Horrorland (COMPLETED)
     - Short Version
 
 # Week 6
 - Senpai
     - Beta Mix
+    - In-Game Version
 - Roses
     - Normal
     - Itch.io Build
@@ -88,14 +101,18 @@
     - Normal
 
 # Week 7
-- Ugh
+- Ugh (COMPLETED)
     - Normal
     - Alterneeyyytive Mix
-- Guns
+    - In-Game Version
+- Guns (COMPLETED)
+    - Normal
+    - Short Version
+- Stress
     - Normal
 
 # Weekend 1 (COMPLETED)
-- Darnell
+- Darnell (COMPLETED)
     - Normal
     - BF Mix
     - Erect

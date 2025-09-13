@@ -1,0 +1,59 @@
+{
+  "version": "1.0.0",
+
+  "backdrop": {
+    "type": "solid",
+    "fadeTime": 2.0,
+    "color": "#BFB3DFD8"
+  },
+
+  "music": {
+    "asset": "",
+    "fadeTime": 0,
+    "looped": false
+  },
+
+  "outro": {
+    "type": "fade",
+    "fadeTime": 1.0
+  },
+
+  "dialogue": [
+    {
+      "speaker": "senpai-angry-daft",
+      "speakerAnimation": "talk",
+      "box": "roses-daft",
+      "boxAnimation": "angrySenpai",
+
+      "text": ["Pas mal pour un gringalet."]
+    },
+    {
+      "speaker": "senpai-angry-daft",
+      "speakerAnimation": "talk",
+      "box": "roses-daft",
+      "boxAnimation": "idle",
+
+      "text": ["Mais cette fois, je vais te faire crier..."],
+      "speed": 0.5
+    },
+    {
+      "speaker": "senpai-angry-daft",
+      "speakerAnimation": "talk",
+      "box": "roses-daft",
+      "boxAnimation": "idle",
+
+      "text": [
+        "Presque aussi fort que je ferai crier ta copine plus tard ce soir, gros nain."
+      ],
+      "speed": 0.5
+    },
+    {
+      "speaker": "bf-pixel-daft",
+      "speakerAnimation": "talkEnter",
+      "box": "roses",
+      "boxAnimation": "idle",
+
+      "text": ["Bip boop bi bi skdoowap"]
+    }
+  ]
+}

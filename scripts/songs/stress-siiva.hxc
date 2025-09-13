@@ -1,0 +1,67 @@
+import funkin.play.song.Song;
+import funkin.save.Save;
+import funkin.play.PlayState;
+import funkin.play.PlayStatePlaylist;
+import funkin.util.Constants;
+import funkin.modding.base.ScriptedFlxSpriteGroup;
+import funkin.play.cutscene.VideoCutscene;
+
+class StressSiivaSong extends Song
+{
+  var tankmanGroup:TankmanSpriteGroup = null;
+
+  public function new()
+  {
+    super('stress-siiva');
+
+  }
+
+  public override function onCountdownStart(event:CountdownScriptEvent):Void
+  {
+    super.onCountdownStart(event);
+
+    if (tankmanGroup != null && !tankmanGroup.scriptCall('isValid'))
+    {
+      // Destroy the tankman group if it's not valid.
+      tankmanGroup.destroy();
+      PlayState.instance.currentStage.remove(tankmanGroup);
+      tankmanGroup = null;
+    }
+
+    if (tankmanGroup == null)
+    {
+      // Initialize the tankman group if it's not available.
+      trace('Initializing tankman group... ' + PlayState.instance.currentVariation);
+      tankmanGroup = ScriptedFlxSpriteGroup.init('TankmanSpriteGroup');
+    }
+
+    if (tankmanGroup != null)
+    {
+      // resets the tankmen!
+      tankmanGroup.scriptCall('reset');
+
+      tankmanGroup.zIndex = 30;
+      PlayState.instance.currentStage.add(tankmanGroup);
+      PlayState.instance.currentStage.refresh();
+    }
+    else
+    {
+      trace('Failed to initialize tankman group!');
+    }
+  }
+
+  function kill():Void
+  {
+    cleanupTankmanGroup();
+  }
+
+  function cleanupTankmanGroup():Void
+  {
+    if (tankmanGroup != null)
+    {
+      PlayState.instance.currentStage.remove(tankmanGroup);
+      tankmanGroup.destroy();
+      tankmanGroup = null;
+    }
+  }
+}
