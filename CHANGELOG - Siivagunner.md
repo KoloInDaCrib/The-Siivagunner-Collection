@@ -32,11 +32,16 @@
     - Beta Mix
 
 # Week 1
-- Bopeebo
+- Bopeebo (COMPLETED)
     - Normal
     - Beta Mix
     - Extended Version
+    - In-Game Version
     - Itch.io Build
+    - Newgrounds Build
+    - OST Version
+    - Short Version
+    - Weekend 1 Update
     - Pico Mix
 - Fresh
     - Pico Mix
@@ -87,6 +92,7 @@
 - Eggnog (COMPLETED)
     - Normal
     - Short Version
+    - Smooth Sherbet (Alpha Mix)
 -Winter Horrorland (COMPLETED)
     - Short Version
 

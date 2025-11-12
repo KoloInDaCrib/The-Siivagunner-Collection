@@ -9,6 +9,7 @@ import flixel.FlxG;
 import funkin.ui.options.OptionsState;
 import flixel.FlxG;
 import funkin.save.Save;
+import funkin.ui.options.PreferencesMenu;
 
 class SiivaOptions extends Module
 {
@@ -20,6 +21,8 @@ class SiivaOptions extends Module
 		if (FlxG.save.data.siivadeath == null) FlxG.save.data.siivadeath = true;
 		if (FlxG.save.data.siivalunch == null) FlxG.save.data.siivalunch = true;
 		if (FlxG.save.data.siivaresults == null) FlxG.save.data.siivaresults = true;
+		if (FlxG.save.data.siivastutter == null) FlxG.save.data.siivastutter = false;
+		if (FlxG.save.data.siivastrum == null) FlxG.save.data.siivastrum = false;
     }
 		
 	function onStateChangeEnd(callback)
@@ -27,7 +30,25 @@ class SiivaOptions extends Module
 		super.onStateChangeEnd(callback);
 		if (!Std.is(callback.targetState, OptionsState))
 			return;
-		var prefs = callback.targetState.optionsCodex.pages.get("preferences");
+		var prefs:PreferencesMenu = callback.targetState.optionsCodex.addPage('siiva', new PreferencesMenu());
+		prefs.onExit.add(function() {
+			FlxG.state.optionsCodex.switchPage('options');
+		});
+
+		prefs.preferenceDesc = [];
+		prefs.items.clear();	
+		prefs.preferenceItems.clear();
+		var optionspage = callback.targetState.optionsCodex.pages.get('options');
+		var exit = optionspage.items.getItem("EXIT") ?? null;
+		var option = optionspage.createItem("SiivaGunner Options", function() FlxG.state.optionsCodex.switchPage('siiva'));
+		if (exit != null) {
+			optionspage.items.members.remove(option);
+			optionspage.items.members.insert(optionspage.items.members.indexOf(exit), option);
+		}
+		for (i in 0...optionspage.items.length){
+			var item = optionspage.items.members[i];
+			item.y = 100 + i * 100;
+		}
 		if (prefs != null) {
 			prefs.createPrefItemCheckbox("Siiva Titlescreen", "Randomly changes the titlescreen to one of two SiIvagunner Rips.", (value) -> {
 				FlxG.save.data.siivatitle = value;
@@ -56,6 +77,15 @@ class SiivaOptions extends Module
 					FlxG.save.flush();
 				}, FlxG.save.data.siivatray);
 			}
+			prefs.createPrefItemCheckbox("Old School Stutter", "Re-adds the removed note stutter from pre-Weekend 1.", (value) -> {
+				FlxG.save.data.siivastutter = value;
+				FlxG.save.flush();
+			}, FlxG.save.data.siivastutter);
+			prefs.createPrefItemCheckbox("Static Opponent Strum", "Stops the opponent strumline from playing an animation, as well as removes their note hold covers.", (value) -> {
+				FlxG.save.data.siivastrum = value;
+				FlxG.save.flush();
+			}, FlxG.save.data.siivastrum);
+			prefs.itemDesc.text = prefs.preferenceDesc[prefs.items.selectedIndex];
 		}
 	}
 }

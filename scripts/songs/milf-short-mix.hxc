@@ -37,8 +37,8 @@ class MILFShortMixSong extends Song
 
   function startVideo()
   {
-    if (FlxG.random.bool(20)) VideoCutscene.play(Assets.getPath(Paths.videos('imnolongersorry')));
-    else VideoCutscene.play(Assets.getPath(Paths.videos('imsorry')));
+    if (FlxG.random.bool(20)) VideoCutscene.play(Paths.videos('imnolongersorry'));
+    else VideoCutscene.play(Paths.videos('imsorry'));
   }
 
   /**

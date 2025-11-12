@@ -54,7 +54,10 @@ class FreeplayCapsule extends Module {
 	    	cap.weekType.animation.addByPrefix('WEEKEND', 'WEEKEND text instance 1', 24, false);
 		}
 		cap.checkWeek(extractedSongID);
-		if (songID == 'ice-roses') cap.checkWeek('roses');
+		switch (songID) {
+			case 'ice-roses': cap.checkWeek('roses');
+			case 'smooth-sherbet-alpha-mix': cap.checkWeek('eggnog');
+		}
 	}
 
 	function checkCapsules(){

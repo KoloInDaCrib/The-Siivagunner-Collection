@@ -54,5 +54,12 @@
     }
   ],
   "background": "#F9CF51",
-  "songs": ["philly-nice-siiva", "blammed-siiva", "blammed-in-game-version", "blammed-ost-version", "blammed-week-4-update"]
+  "songs": [
+    "philly-nice-siiva",
+    "blammed-siiva",
+    "blammed-extended-version",
+    "blammed-in-game-version",
+    "blammed-ost-version",
+    "blammed-week-4-update"
+  ]
 }

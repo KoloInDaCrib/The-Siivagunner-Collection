@@ -1,0 +1,43 @@
+{
+  "version": "1.0.0",
+  "name": "Spooky Bomberman",
+  "assetPath": "characters/spooky_kids_assets_bomberman",
+  "singTime": 8.0,
+  "healthIcon": {
+    "id": "spooky-bomberman"
+  },
+  "startingAnimation": "danceRight",
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "spooky dance idle",
+      "frameRate": 24,
+      "offsets": [0, 0]
+    },
+    {
+      "name": "singLEFT",
+      "prefix": "note sing left",
+      "offsets": [130, -10]
+    },
+    {
+      "name": "singDOWN",
+      "prefix": "spooky DOWN note",
+      "offsets": [-50, -130]
+    },
+    {
+      "name": "singUP",
+      "prefix": "spooky UP NOTE",
+      "offsets": [-20, 26]
+    },
+    {
+      "name": "singRIGHT",
+      "prefix": "spooky sing right",
+      "offsets": [-130, -14]
+    },
+    {
+      "name": "cheer",
+      "prefix": "Cheer",
+      "offsets": [0, 0]
+    }
+  ]
+}

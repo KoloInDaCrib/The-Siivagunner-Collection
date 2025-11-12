@@ -54,5 +54,12 @@
     }
   ],
   "background": "#F9CF51",
-  "songs": ["ugh-siiva", "ugh-alterneeyyytive-mix", "ugh-in-game-version", "guns-siiva", "guns-short-version", "stress-siiva"]
+  "songs": [
+    "ugh-siiva",
+    "ugh-alterneeyyytive-mix",
+    "ugh-in-game-version",
+    "guns-siiva",
+    "guns-short-version",
+    "stress-siiva"
+  ]
 }

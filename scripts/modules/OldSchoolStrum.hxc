@@ -1,0 +1,37 @@
+import funkin.play.PlayState;
+
+import funkin.modding.module.Module;
+
+import funkin.Paths;
+import flixel.FlxG;
+
+using StringTools;
+
+class OldSchoolStrum extends Module
+{
+	function new()
+	{
+		super('OldSchoolStrum', 1, {state: PlayState});
+	}
+
+	override function onCountdownStart(event) {
+		super.onCountdownStart(event);
+		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+		if (PlayState.instance.isMinimalMode) return;
+
+		if (!FlxG.save.data.siivastrum) return;
+
+		if (PlayState.instance.currentDifficulty != 'siiva') return;
+
+		for (strums in PlayState.instance.opponentStrumline.strumlineNotes.members) {
+			strums.active = strums.forceActive = false;
+			for (anims in strums.animation.getNameList()) {
+				if (!anims.contains('static')) strums.animation.remove(anims);
+			}
+		}
+		PlayState.instance.opponentStrumline.noteHoldCovers.visible = false;
+		for (holdNote in PlayState.instance.opponentStrumline.holdNotes.members){
+			holdNote.alpha = 0.6;
+		}
+	}
+}

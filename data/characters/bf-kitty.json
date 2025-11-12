@@ -1,0 +1,113 @@
+{
+  "version": "1.0.0",
+  "name": "Boyfriend (Kitty)",
+  "renderType": "multisparrow",
+  "assetPath": "characters/BOYFRIEND-KITTY",
+  "flipX": true,
+  "singTime": 8.0,
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "BF idle dance",
+      "offsets": [-5, 0]
+    },
+    {
+      "name": "singLEFT",
+      "prefix": "BF NOTE LEFT0",
+      "offsets": [65, 0]
+    },
+    {
+      "name": "singDOWN",
+      "prefix": "BF NOTE DOWN0",
+      "offsets": [-5, 0]
+    },
+    {
+      "name": "singUP",
+      "prefix": "BF NOTE UP0",
+      "offsets": [-5, 10]
+    },
+    {
+      "name": "singRIGHT",
+      "prefix": "BF NOTE RIGHT0",
+      "offsets": [0, 0]
+    },
+    {
+      "name": "singLEFTmiss",
+      "prefix": "BF NOTE LEFT MISS",
+      "offsets": [65, 0]
+    },
+    {
+      "name": "singDOWNmiss",
+      "prefix": "BF NOTE DOWN MISS",
+      "offsets": [0, 0]
+    },
+    {
+      "name": "singUPmiss",
+      "prefix": "BF NOTE UP MISS",
+      "offsets": [-5, 0]
+    },
+    {
+      "name": "singRIGHTmiss",
+      "prefix": "BF NOTE RIGHT MISS",
+      "offsets": [0, 0]
+    },
+    {
+      "name": "preAttack",
+      "prefix": "bf pre attack",
+      "offsets": [0, 0]
+    },
+    {
+      "name": "attack",
+      "prefix": "boyfriend attack",
+      "offsets": [0, 0]
+    },
+    {
+      "name": "dodge",
+      "prefix": "boyfriend dodge",
+      "offsets": [0, 0]
+    },
+    {
+      "name": "hey",
+      "prefix": "BF HEY!!",
+      "offsets": [-40, -45]
+    },
+    {
+      "name": "cheer",
+      "prefix": "Cheer",
+      "assetPath": "characters/BFKittyCheer",
+      "offsets": [0, 0]
+    },
+    {
+      "name": "hit",
+      "prefix": "BF hit",
+      "assetPath": "characters/BOYFRIEND-KITTY",
+      "offsets": [0, 0]
+    },
+    {
+      "name": "firstDeath",
+      "prefix": "BF dies",
+      "offsets": [-37, 11]
+    },
+    {
+      "name": "fakeoutDeath",
+      "prefix": "BF dies",
+      "offsets": [-37, 11]
+    },
+    {
+      "name": "deathLoop",
+      "prefix": "BF Dead Loop",
+      "looped": true,
+      "offsets": [-39, 15]
+    },
+    {
+      "name": "deathConfirm",
+      "prefix": "BF Dead confirm",
+      "offsets": [-40, 15]
+    },
+    {
+      "name": "scared",
+      "prefix": "BF idle shaking",
+      "offsets": [5, 0]
+    }
+  ]
+}

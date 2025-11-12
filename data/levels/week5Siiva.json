@@ -54,5 +54,12 @@
     }
   ],
   "background": "#F9CF51",
-  "songs": ["cocoa-siiva", "cocoa-short-version", "eggnog-siiva", "eggnog-short-version", "winter-horrorland-short-version"]
+  "songs": [
+    "cocoa-siiva",
+    "cocoa-short-version",
+    "eggnog-siiva",
+    "eggnog-short-version",
+    "smooth-sherbet-alpha-mix",
+    "winter-horrorland-short-version"
+  ]
 }

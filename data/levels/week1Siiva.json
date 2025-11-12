@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "name": "DADDY DEAREST",
+  "name": "DADDY DEAREST (HQ)",
   "titleAsset": "storymenu/titles/week1",
   "visible": false,
   "props": [
@@ -54,5 +54,23 @@
     }
   ],
   "background": "#F9CF51",
-  "songs": ["bopeebo-siiva", "bopeebo-beta-mix", "bopeebo-extended-version", "bopeebo-itchio-build", "bopeebo-pico-mix", "fresh-pico-mix", "fresh-vinyl-mix", "dadbattle-siiva", "dadbattle-in-game-version", "dadbattle-ambient-mix"]
+  "songs": [
+    "bopeebo-siiva", 
+    "bopeebo-beta-mix", 
+    "bopeebo-extended-version", 
+    "bopeebo-in-game-version", 
+    "bopeebo-itchio-build", 
+    "bopeebo-newgrounds-build", 
+    "bopeebo-ost-version", 
+    "bopeebo-short-version", 
+    "bopeebo-weekend-1-update", 
+    "bopeebo-pico-mix", 
+    "fresh-siiva", 
+    "fresh-alternate-version",
+    "fresh-pico-mix", 
+    "fresh-vinyl-mix", 
+    "dadbattle-siiva", 
+    "dadbattle-in-game-version", 
+    "dadbattle-ambient-mix"  
+  ]
 }

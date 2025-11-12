@@ -12,6 +12,6 @@ class DifficultySpriteFixSiiva extends Module
     function onCreate(event)
         {
             super.onCreate(event);
-			Constants.DEFAULT_DIFFICULTY_LIST_FULL.push("siiva");
+			if (!Constants.DEFAULT_DIFFICULTY_LIST_FULL.contains('siiva')) Constants.DEFAULT_DIFFICULTY_LIST_FULL.push("siiva");
         }
 }

@@ -1,8 +1,8 @@
 {
   "version": "1.0.0",
-  "name": "Boyfriend (Gex)",
+  "name": "Boyfriend (Gecs)",
   "renderType": "multisparrow",
-  "assetPath": "characters/BOYFRIEND-GEX",
+  "assetPath": "characters/BOYFRIEND-GECS",
   "healthIcon": {
     "id": "bf"
   },
