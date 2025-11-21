@@ -7,11 +7,10 @@ class DifficultySpriteFixSiiva extends Module
     function new()
         {
             super('DifficultySpriteFixSiiva');
-        }    
 
-    function onCreate(event)
-        {
-            super.onCreate(event);
-			if (!Constants.DEFAULT_DIFFICULTY_LIST_FULL.contains('siiva')) Constants.DEFAULT_DIFFICULTY_LIST_FULL.push("siiva");
-        }
+            this.active = false;
+            FlxG.signals.postGameStart.addOnce(function() {
+			    if (!Constants.DEFAULT_DIFFICULTY_LIST_FULL.contains('siiva')) Constants.DEFAULT_DIFFICULTY_LIST_FULL.push("siiva");
+            })
+        }    
 }
