@@ -20,7 +20,12 @@ class DefaultSoundTray extends Module
 	public function new(){
 		super('DefaultSoundTray');
 
-		if (FlxG.onMobile) active = false; // Disable on mobile since mobile doesn't have a sound tray
+		active = false;
+
+		// Disable on mobile since mobile doesn't have a sound tray
+		if (!FlxG.onMobile) {
+			FlxG.signals.postGameStart.addOnce(createSoundTray);
+		}  
 	}
 
 	var _label:TextField;
@@ -47,9 +52,8 @@ class DefaultSoundTray extends Module
 	var _bgbars:Array<Bitmap>;
 
 	//Bring back the classic cuz I am evil >:)
-	override function onCreate(event:ScriptEvent)
+	override function createSoundTray()
 	{
-		super.onCreate(event);
 		if (!FlxG.save.data.siivatray) return;
 		FlxG.sound.soundTray.volumeUpSound = FlxG.sound.soundTray.volumeDownSound = FlxG.sound.soundTray.volumeMaxSound = Paths.sound("soundtray/beep");
 		FlxG.sound.soundTray.removeChildren();
