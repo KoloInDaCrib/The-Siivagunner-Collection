@@ -11,8 +11,10 @@ import flixel.util.FlxTimer;
 import funkin.PlayerSettings;
 import funkin.util.TouchUtil;
 import funkin.util.SwipeUtil;
+import funkin.data.story.level.LevelRegistry;
 
 using StringTools;
+using Lambda;
 
 class FreeplayCapsule extends Module {
 
@@ -29,12 +31,100 @@ class FreeplayCapsule extends Module {
 			changeSelectionCallback(str);
 			checkCapsules();
 		};
+		var baseSongs = LevelRegistry.instance.listBaseGameEntryIds();
+		insertAfterWeek(baseSongs[baseSongs.length - 1], listBaseSiivaEntryIds());
 		if (FlxG.state.subState.currentDifficulty != 'siiva') return;
 		var filteredCapsules:Array<SongMenuItem> = FlxG.state.subState.grpCapsules.members.filter(function(cap:SongMenuItem) {
 			// Dead capsules are ones which were removed from the list when changing filters.
        		return cap != null && cap.alive && cap.freeplayData != null;
       	});
 		for (capsule in filteredCapsules) weekText(capsule);	
+	}
+
+	function listBaseSiivaEntryIds() {
+		return [
+			'tutorialSiiva',
+			'week1Siiva',
+			'week2Siiva',
+			'week3Siiva',
+			'week4Siiva',
+			'week5Siiva',
+			'week6Siiva',
+			'week7Siiva',
+			'weekend1Siiva',
+			'weekExtrasSiiva'
+		  ];
+	}
+
+	function insertAfterWeek(weekName:String, songs:Array<String>) { // Holy shit
+		var levels = [];
+		var hasSeenWeek = false;
+		for (song in FlxG.state.subState.songs.copy()) {
+			if (song != null && (songs.indexOf(song?.levelId) ?? -1) != -1) {
+				FlxG.state.subState.songs.remove(song);
+				levels.push(song);
+			}
+		}
+		var levelIds = [];
+		for (song in FlxG.state.subState.songs) {
+			if ((song?.levelId ?? '') == weekName && !hasSeenWeek) hasSeenWeek = true;
+			if ((levelIds.indexOf(song?.levelId) ?? -1) == -1) levelIds.push(song?.levelId);
+			if (hasSeenWeek && (song?.levelId) != weekName) {
+				for (item in levels) {
+					FlxG.state.subState.songs.insert(FlxG.state.subState.songs.indexOf(song), item);
+				}
+				break;
+			}
+		}
+		var capsules = [];
+		var hasSeenCapsule = false;
+		for (capsule in FlxG.state.subState.grpCapsules.members.copy()) {
+			if (capsule?.freeplayData == null) continue;
+			if ((songs.indexOf(capsule?.freeplayData?.levelId) ?? -1) != -1) {
+				FlxG.state.subState.grpCapsules.members.remove(capsule);
+				capsules.push(capsule);
+			}
+		}
+		if (capsules.length > 0) {
+			var neededLevel:String;
+			var insertedCapsules:Bool = false;
+			for (capsule in FlxG.state.subState.grpCapsules.members) {
+				if (capsule?.freeplayData == null) continue;
+				if (levelIds.indexOf(capsule?.freeplayData?.levelId) != -1 && levelIds.indexOf(capsule?.freeplayData?.levelId) <= levelIds.indexOf(weekName))
+					continue;
+				else {
+					insertedCapsules = true;
+					for (item in capsules) {
+						FlxG.state.subState.grpCapsules.members.insert(FlxG.state.subState.grpCapsules.members.indexOf(capsule), item);
+					}	
+					break;
+				}
+			}
+			if (!insertedCapsules) {
+				for (item in capsules) {
+					FlxG.state.subState.grpCapsules.members.push(item);
+				}
+			}
+			FlxG.state.subState?.grpCapsules?.forEachAlive(function(funnyMenu:SongMenuItem) {
+				var curIndex = FlxG.state.subState.grpCapsules.members.indexOf(funnyMenu);
+				funnyMenu.targetPos.x = funnyMenu.x;
+				funnyMenu.ID = curIndex;
+				funnyMenu.index = curIndex + 1;
+				if (FlxG.state.subState.forceSkipIntro || FlxG.state.subState.fromCharSelect) funnyMenu.forcePosition();
+				else {
+					funnyMenu.initPosition(FlxG.width, 0);
+					funnyMenu.initJumpIn(0, true);
+				}
+			});
+			if (FreeplayState.rememberedSongId != null) {
+				FlxG.state.subState.curSelected = FlxG.state.subState.grpCapsules.findIndex(function(capsule) {
+					if (capsule == null) return false;
+					return capsule.freeplayData?.data?.id == FreeplayState.rememberedSongId;
+				});		
+			}
+			if (FlxG.state.subState.curSelected == -1) FlxG.state.subState.curSelected = 0;
+			FlxG.state.subState.changeSelection();		
+		}
 	}
 
 	function weekText(cap:SongMenuItem) {

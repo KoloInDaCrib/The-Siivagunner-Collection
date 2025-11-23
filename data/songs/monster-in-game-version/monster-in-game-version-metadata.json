@@ -1,0 +1,90 @@
+{
+  "version": "2.2.4",
+  "songName": "Monster (In-Game Version)",
+  "artist": "BassetFilms / SiivaGunner",
+  "looped": false,
+  "offsets": {
+    "instrumental": 0,
+    "altInstrumentals": {    },
+    "vocals": {    },
+    "altVocals": {    }
+  },
+  "playData": {
+    "songVariations": [],
+    "difficulties": [
+      "siiva"
+    ],
+    "characters": {
+      "player": "bf-grayscale",
+      "girlfriend": "gf-grayscale",
+      "opponent": "monster-grayscale",
+      "instrumental": "",
+      "opponentVocals": [
+        "monster"
+      ],
+      "playerVocals": [
+        "bf"
+      ]
+    },
+    "album": "volumeHQ",
+    "stage": "spookyMansion",
+    "noteStyle": "funkin",
+    "ratings": {
+      "siiva": 5
+    },
+    "previewStart": 0,
+    "previewEnd": 0
+  },
+  "generatedBy": "Friday Night Funkin' - v0.7.5",
+  "timeFormat": "ms",
+  "timeChanges": [
+    {
+      "t": 0,
+      "b": 0,
+      "bpm": 150,
+      "n": 4,
+      "d": 4,
+      "bt": [4, 4, 4, 4]
+    },
+    {
+      "t": 31999.998,
+      "b": 80,
+      "bpm": 150,
+      "n": 4,
+      "d": 4,
+      "bt": [4, 4, 4, 4]
+    },
+    {
+      "t": 47999.9961,
+      "b": 120,
+      "bpm": 150,
+      "n": 4,
+      "d": 4,
+      "bt": [4, 4, 4, 4]
+    },
+    {
+      "t": 76799.99,
+      "b": 192,
+      "bpm": 150,
+      "n": 4,
+      "d": 4,
+      "bt": [4, 4, 4, 4]
+    },
+    {
+      "t": 89599.99,
+      "b": 224,
+      "bpm": 166,
+      "n": 4,
+      "d": 4,
+      "bt": [4, 4, 4, 4]
+    },
+    {
+      "t": 156414.453,
+      "b": 408.8533,
+      "bpm": 150,
+      "n": 4,
+      "d": 4,
+      "bt": [4, 4, 4, 4]
+    }
+  ]
+}

@@ -62,10 +62,11 @@ class SiivaOptions extends Module
 				FlxG.save.data.siivavocals = value;
 				FlxG.save.flush();
 			}, FlxG.save.data.siivavocals);
-			prefs.createPrefItemCheckbox("Siiva Results Music", "Replaces the results music with custom rips made by me.", (value) -> {
+			// Don't exist yet
+			/*prefs.createPrefItemCheckbox("Siiva Results Music", "Replaces the results music with custom rips made by me.", (value) -> {
 				FlxG.save.data.siivaresults = value;
 				FlxG.save.flush();
-			}, FlxG.save.data.siivaresults);
+			}, FlxG.save.data.siivaresults);*/
 			prefs.createPrefItemCheckbox("Siiva Lunchbox Rips", "Enables a random Lunchbox rip during Senpai's dialogue.", (value) -> {
 				FlxG.save.data.siivalunch = value;
 				FlxG.save.flush();

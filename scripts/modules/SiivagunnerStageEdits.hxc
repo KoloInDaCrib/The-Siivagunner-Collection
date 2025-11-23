@@ -12,8 +12,15 @@ class SiivagunnerStageEdits extends Module
 		super('SiivagunnerStageEdits');
 	}
 
-	override function onSongLoaded(event) {
-		super.onSongLoaded(event);
+	override function onSubStateOpenEnd(event) {
+		if (event.targetState is PlayState) loadStageAssets();
+	}
+
+	override function onStateChangeEnd(event) {
+		if (event.targetState is PlayState) loadStageAssets();
+	}
+
+	function loadStageAssets() {
 		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
 		if (PlayState.instance.isMinimalMode) return;
 
