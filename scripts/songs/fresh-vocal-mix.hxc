@@ -1,0 +1,204 @@
+import flixel.group.FlxTypedGroup;
+import flixel.group.FlxTypedSpriteGroup;
+import flixel.math.FlxBasePoint;
+import flixel.math.FlxRect;
+import flixel.util.FlxSort;
+import flixel.FlxG;
+import flixel.FlxCamera;
+import flixel.FlxSprite;
+import funkin.play.song.Song;
+import funkin.play.PlayState;
+import funkin.util.SortUtil;
+import funkin.Conductor;
+
+class FreshVocalMixSong extends Song
+{
+    final ZOOM_FACTOR:Float = 0.5;
+    final ZOOM_OUT_START:Int = 48;
+    final ZOOM_OUT_DURATION:Int = 16;
+
+    var camAcapella:FlxCamera;
+    var acapellaGroup:FlxTypedGroup;
+
+    public function new()
+    {
+        super("fresh-vocal-mix");
+    }
+
+    override public function onCreate(event:ScriptEvent)
+    {
+        super.onCreate(event);
+
+        // Create and add a camera to be layered under camGame.
+        camAcapella = new FlxCamera();
+        camAcapella.bgColor = 0x0;
+        FlxG.cameras.insert(camAcapella, 0, false);
+
+        // Properly size and position the camera according to the zoom factor.
+        camAcapella.width = FlxG.width / ZOOM_FACTOR;
+        camAcapella.height = FlxG.height / ZOOM_FACTOR;
+
+        camAcapella.x = (FlxG.width - camAcapella.width) / 2;
+        camAcapella.y = (FlxG.height - camAcapella.height) / 2;
+
+        // Create a group for the acapella camera.
+        acapellaGroup = new FlxTypedGroup();
+        PlayState.instance.add(acapellaGroup);
+
+        // Create the sprites for the acapella part.
+        var stage:Stage = PlayState.instance?.currentStage;
+        if (stage != null)
+        {
+            var dadSlots:Array<Int> = [0, 1, 3, 6];
+            var bfSlots:Array<Int> = [2, 5, 7, 8];
+
+            for (i in 0...9)
+            {
+                // Ignore the middle screen since it's covered by the main camera.
+                if (i == Math.floor(9 / 2)) continue;
+
+                var row:Int = i % 3;
+                var column:Int = Math.floor(i / 3);
+                var sizes:FlxBasePoint = new FlxBasePoint(FlxG.width, FlxG.height);
+                var acapellaScale:Float = 1 / ZOOM_FACTOR / 3;
+
+                // Fetch the camera point to be used as the base for positioning.
+                var camFocusPoint:Null<FlxPoint> = null;
+                if (dadSlots.contains(i))
+                {
+                    camFocusPoint = stage?.getDad()?.cameraFocusPoint;
+                }
+                else if (bfSlots.contains(i))
+                {
+                    camFocusPoint = stage?.getBoyfriend()?.cameraFocusPoint;
+                }
+
+                if (camFocusPoint == null) continue;
+
+                for (name => prop in stage.namedProps)
+                {
+                    // Exclude animated props because I don't want to parse them.
+                    if (stage.boppers.contains(prop)) continue;
+                    
+                    // Exclude assets that are off-screen in relation to the camera focus point.
+                    // Also account for the scroll factor.
+                    var camScroll:FlxBasePoint = new FlxBasePoint(camFocusPoint.x - FlxG.camera.width * 0.5 / FlxG.camera.zoom, camFocusPoint.y - FlxG.camera.height * 0.5 / FlxG.camera.zoom);
+                    var realPos:FlxBasePoint = new FlxBasePoint(prop.x - camScroll.x * prop.scrollFactor.x, prop.y - camScroll.y * prop.scrollFactor.y);
+
+                    if (realPos.x > camFocusPoint.x + (sizes.x / 2) || realPos.y > camFocusPoint.y + (sizes.y / 2)) continue;
+                    if (realPos.x + prop.width < camFocusPoint.x - (sizes.x / 2) || realPos.y + prop.height < camFocusPoint.y - (sizes.y / 2)) continue;
+
+                    trace("Adding prop: " + name + " to dad: " + dadSlots.contains(i));
+
+                    // Create a prop positioned approximately where it would be and add it to a mini stage.
+                    var spr:FlxSprite = new FlxSprite(realPos.x, realPos.y).loadGraphicFromSprite(prop);
+                    spr.active = false;
+                    spr.camera = camAcapella;
+                    spr.zIndex = prop.zIndex;
+                    spr.scale.set(prop.scale.x * acapellaScale, prop.scale.y * acapellaScale);
+                    spr.updateHitbox();
+
+                    // Apply clipRect on every sprite to make the stage look like a mini screen focused on the character.
+                    // We have to make sure that the size and position of the clipRect don't exceed the theoretical screen bounds.
+                    var offsetX:Int = 0;
+                    var offsetY:Int = 0;
+
+                    if (spr.x < camFocusPoint.x - (sizes.x / 2)) offsetX = Math.floor(camFocusPoint.x - sizes.x / 2 - spr.x);
+                    if (spr.y < camFocusPoint.y - (sizes.y / 2)) offsetY = Math.floor(camFocusPoint.y - sizes.y / 2 - spr.y);
+
+                    spr.clipRect = new FlxRect(
+                        offsetX / spr.scale.x, 
+                        offsetY / spr.scale.y, 
+                        Math.min(camFocusPoint.x + sizes.x / 2 - realPos.x, sizes.x) / spr.scale.x, 
+                        Math.min(camFocusPoint.y + sizes.y / 2 - realPos.y, sizes.y) / spr.scale.y
+                    );
+
+                    // Offset the positions according to the camera position.
+                    spr.x -= (camFocusPoint.x - sizes.x / 2);
+                    spr.y -= (camFocusPoint.y - sizes.y / 2);
+
+                    // Offset the positions and scale according to the current slot.
+                    spr.x += row * (sizes.x);
+                    spr.y += column * (sizes.y);
+                    
+                    spr.updateHitbox();
+
+                    // Add the sprite to the acapella group.
+                    acapellaGroup.add(spr);
+                }
+            }
+        }
+
+        // Create camera border sprite for the main camera like in the original rip.
+        var camBorderSprite:FlxSprite = new FlxSprite().makeGraphic(1, 1, 0xFF000000);
+        camBorderSprite.active = false;
+        camBorderSprite.camera = camAcapella;
+        camBorderSprite.scale.set(FlxG.width + 50, FlxG.height + 50);
+        camBorderSprite.updateHitbox();
+        camBorderSprite.x = (camAcapella.width - camBorderSprite.width) / 2;
+        camBorderSprite.y = (camAcapella.height - camBorderSprite.height) / 2;
+        camBorderSprite.zIndex = 10000;
+
+        acapellaGroup.add(camBorderSprite);
+        acapellaGroup.sort(SortUtil.byZIndex, FlxSort.ASCENDING);
+    }
+
+    override public function onUpdate(event:UpdateScriptEvent)
+    {
+        super.onUpdate(event);
+
+        var state:PlayState = PlayState.instance;
+        if (state == null) return;
+
+        // Tween out the camera based on the current step
+        if (Conductor.instance.currentStepTime >= ZOOM_OUT_START)
+        {
+            var percent:Float = (Conductor.instance.currentStepTime - ZOOM_OUT_START) / ZOOM_OUT_DURATION;
+            percent = Math.min(percent, 1.0);
+
+            var scale:Float = (1 - percent * ZOOM_FACTOR);
+
+            state.camGame.flashSprite.scaleX = scale;
+            state.camGame.flashSprite.scaleY = scale;
+
+            if (!FlxG.onMobile)
+            {
+                // Don't scale the hud camera on mobile to keep the gameplay fair.
+                state.camHUD.flashSprite.scaleX = scale;
+                state.camHUD.flashSprite.scaleY = scale;
+            }
+
+            // Make acapella camera visible again and update its scale as well.
+            camAcapella.revive();
+            acapellaGroup.revive();
+
+            camAcapella.flashSprite.scaleX = scale;
+            camAcapella.flashSprite.scaleY = scale;
+        }
+    }
+
+    override public function onDestroy(event:ScriptEvent)
+    {
+        super.onDestroy(event);
+
+        // Make acapella camera invisible so that it doesn't render stuff and waste memory.
+        camAcapella.kill();
+        acapellaGroup.kill();
+    }
+
+    override public function onSongRetry(event:SongRetryEvent)
+    {
+        super.onSongRetry(event);
+
+        // Reset the camera sizes.
+        for (cam in [PlayState.instance.camGame, PlayState.instance.camHUD, camAcapella])
+        {
+            cam.flashSprite.scaleX = 1;
+            cam.flashSprite.scaleY = 1;
+        }
+
+        // Make acapella camera invisible so that it doesn't render stuff and waste memory.
+        camAcapella.kill();
+        acapellaGroup.kill();
+    }
+}
